@@ -9,6 +9,24 @@
  */
 {
   "sections": {
+    "product_table_all_XxeyCX": {
+      "type": "product-table-all",
+      "name": "Product Table All",
+      "settings": {
+        "show_index": true,
+        "show_title": true,
+        "show_url": false,
+        "show_id": true,
+        "show_options": true,
+        "show_variants": false,
+        "show_variant_ids": false,
+        "show_tags": true,
+        "show_collections": true,
+        "show_images": false,
+        "show_image_name": false,
+        "show_image_format": false
+      }
+    },
     "collection_list_Wfgh3m": {
       "type": "main-collection-list",
       "blocks": {
@@ -173,6 +191,7 @@
     }
   },
   "order": [
+    "product_table_all_XxeyCX",
     "collection_list_Wfgh3m"
   ]
 }

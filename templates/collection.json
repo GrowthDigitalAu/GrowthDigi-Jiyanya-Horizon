@@ -9,6 +9,25 @@
  */
 {
   "sections": {
+    "collection_product_table_ULbTWR": {
+      "type": "collection-product-table",
+      "name": "Collection Product Table",
+      "settings": {
+        "collection": "",
+        "show_index": true,
+        "show_title": true,
+        "show_url": false,
+        "show_id": true,
+        "show_options": true,
+        "show_variants": false,
+        "show_variant_ids": false,
+        "show_tags": true,
+        "show_collections": true,
+        "show_images": false,
+        "show_image_name": false,
+        "show_image_format": false
+      }
+    },
     "section": {
       "type": "section",
       "blocks": {
@@ -230,6 +249,7 @@
     }
   },
   "order": [
+    "collection_product_table_ULbTWR",
     "section",
     "main"
   ]

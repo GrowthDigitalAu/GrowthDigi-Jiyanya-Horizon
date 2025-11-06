@@ -1,0 +1,329 @@
+<section class="collection-product-table">
+  {% comment %}
+    Dynamically select the collection
+  {% endcomment %}
+  {% if section.settings.collection != blank %}
+    {% assign selected_collection = collections[section.settings.collection] %}
+  {% elsif collection %}
+    {% assign selected_collection = collection %}
+  {% endif %}
+
+  {% if selected_collection %}
+    <h2>
+      {{ selected_collection.title }}
+      <small>({{ selected_collection.products_count }} products)</small>
+    </h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            {% if section.settings.show_index %}
+              <th>#</th>
+            {% endif %}
+            {% if section.settings.show_title %}
+              <th>Product Title</th>
+            {% endif %}
+            {% if section.settings.show_url %}
+              <th>Product URL</th>
+            {% endif %}
+            {% if section.settings.show_id %}
+              <th>Product ID</th>
+            {% endif %}
+            {% if section.settings.show_options %}
+              <th>Options</th>
+            {% endif %}
+            {% if section.settings.show_variants %}
+              <th>Variants</th>
+            {% endif %}
+            {% if section.settings.show_variant_ids %}
+              <th>Variant IDs</th>
+            {% endif %}
+            {% if section.settings.show_tags %}
+              <th>Tags</th>
+            {% endif %}
+            {% if section.settings.show_collections %}
+              <th>Collections</th>
+            {% endif %}
+            {% if section.settings.show_images %}
+              <th>Image URL</th>
+            {% endif %}
+            {% if section.settings.show_image_name %}
+              <th>Image Name</th>
+            {% endif %}
+            {% if section.settings.show_image_format %}
+              <th>Image Format</th>
+            {% endif %}
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for product in selected_collection.products %}
+            <tr>
+              {% if section.settings.show_index %}
+                <td>{{ forloop.index }}</td>
+              {% endif %}
+
+              {% if section.settings.show_title %}
+                <td>
+                  <a href="{{ product.url }}" target="_blank"> {{ product.title }} </a>
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_url %}
+                <td>
+                  <a href="{{ product.url }}" target="_blank">{{ product.url }}</a>
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_id %}
+                <td>
+                  <a
+                    href="https://admin.shopify.com/store/{{ shop.permanent_domain | remove: '.myshopify.com' }}/products/{{ product.id }}"
+                    target="_blank"
+                  >
+                    {{ product.id }}
+                  </a>
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_options %}
+                <td>
+                  {% if product.options_with_values.size > 0 %}
+                    {% for option in product.options_with_values %}
+                      <strong>{{ option.name }}:</strong>
+                      {{ option.values | join: ', ' }}
+                      {% unless forloop.last %}<br>{% endunless %}
+                    {% endfor %}
+                  {% else %}
+                    No Options
+                  {% endif %}
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_variants %}
+                <td>
+                  {% if product.variants.size > 0 %}
+                    <ul>
+                      {% for variant in product.variants %}
+                        <li>
+                          {{ variant.title }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    No Variants
+                  {% endif %}
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_variant_ids %}
+                <td>
+                  {% if product.variants.size > 0 %}
+                    {% for variant in product.variants %}
+                      <a
+                        href="https://admin.shopify.com/store/{{ shop.permanent_domain | remove: '.myshopify.com' }}/products/{{ product.id }}/variants/{{ variant.id }}"
+                        target="_blank"
+                      >
+                        {{ variant.id }}
+                      </a>
+                      {% unless forloop.last %}<br>{% endunless %}
+                    {% endfor %}
+                  {% else %}
+                    No Variant IDs
+                  {% endif %}
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_tags %}
+                <td>
+                  {% if product.tags.size > 0 %}
+                    {{ product.tags | join: ', ' }}
+                  {% else %}
+                    No Tags
+                  {% endif %}
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_collections %}
+                <td>
+                  {% if product.collections.size > 0 %}
+                    {% for coll in product.collections %}
+                      <a href="{{ coll.url }}" target="_blank">{{ coll.title }}</a>
+                      {%- unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                  {% else %}
+                    No Collections
+                  {% endif %}
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_images %}
+                <td>
+                  {% if product.images.size > 0 %}
+                    {% for image in product.images %}
+                      <a href="{{ image.src | img_url: 'master' }}" target="_blank">{{ image.src }}</a>
+                      {%- unless forloop.last %}<br>{% endunless %}
+                    {% endfor %}
+                  {% else %}
+                    No Images
+                  {% endif %}
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_image_name %}
+                <td>
+                  {% for image in product.images %}
+                    {% assign img_last = image.src | split: '/' | last %}
+                    {% assign img_clean = img_last | split: '?' | first %}
+                    {% assign name_without_ext = img_clean
+                      | replace: '.jpg', ''
+                      | replace: '.jpeg', ''
+                      | replace: '.png', ''
+                      | replace: '.webp', ''
+                      | replace: '.gif', ''
+                    %}
+                    {{ name_without_ext -}}
+                    {%- unless forloop.last %}<br>{% endunless %}
+                  {% endfor %}
+                </td>
+              {% endif %}
+
+              {% if section.settings.show_image_format %}
+                <td>
+                  {% for image in product.images %}
+                    {{ image.src | split: '.' | last | split: '?' | first }}
+                    {% unless forloop.last %}<br>{% endunless %}
+                  {% endfor %}
+                </td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>No collection selected or found.</p>
+  {% endif %}
+</section>
+
+<style>
+  .collection-product-table h2 {
+    margin-bottom: 15px;
+  }
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    {% comment %} max-height: 600px; {% endcomment %}
+    overflow-y: auto;
+  }
+  .collection-product-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .collection-product-table th,
+  .collection-product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 14px;
+    vertical-align: top;
+    word-break: break-all;
+  }
+  .collection-product-table thead th {
+    position: sticky;
+    top: 0;
+    background: #f5f5f5;
+    z-index: 2;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Product Table",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_index",
+      "label": "Show Row Number",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show Product Title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_url",
+      "label": "Show Product URL",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_id",
+      "label": "Show Product ID",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_options",
+      "label": "Show Product Options",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variants",
+      "label": "Show Product Variants",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variant_ids",
+      "label": "Show Variant IDs",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show Product Tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collections",
+      "label": "Show Product Collections",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_images",
+      "label": "Show Product Image URLs",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_name",
+      "label": "Show Image Names",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_format",
+      "label": "Show Image Formats",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Product Table"
+    }
+  ]
+}
+{% endschema %}
