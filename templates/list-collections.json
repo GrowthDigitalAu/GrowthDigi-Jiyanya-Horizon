@@ -11,22 +11,33 @@
   "sections": {
     "product_table_all_XxeyCX": {
       "type": "product-table-all",
+      "blocks": {
+        "index_zaWQfB": {
+          "type": "index",
+          "settings": {
+            "column_label": "#"
+          }
+        },
+        "title_CfyyG7": {
+          "type": "title",
+          "settings": {
+            "column_label": "Product Title"
+          }
+        },
+        "description_EDtTzg": {
+          "type": "description",
+          "settings": {
+            "column_label": "Description"
+          }
+        }
+      },
+      "block_order": [
+        "index_zaWQfB",
+        "title_CfyyG7",
+        "description_EDtTzg"
+      ],
       "name": "Product Table All",
-      "settings": {
-        "show_index": true,
-        "show_title": true,
-        "show_url": false,
-        "show_id": false,
-        "show_options": false,
-        "show_variants": false,
-        "show_variant_ids": false,
-        "show_tags": false,
-        "show_collections": true,
-        "show_discription": true,
-        "show_images": false,
-        "show_image_name": false,
-        "show_image_format": false
-      }
+      "settings": {}
     },
     "collection_list_Wfgh3m": {
       "type": "main-collection-list",
