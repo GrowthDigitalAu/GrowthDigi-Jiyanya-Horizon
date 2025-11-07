@@ -19,6 +19,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/AdobeStock_757439957_a207a4d8-4f91-4ca5-b7bf-a2eb1312434f.webp",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -98,8 +99,8 @@
       "name": "t:names.media_with_text",
       "settings": {
         "media_position": "left",
-        "media_width": "medium",
-        "media_height": "auto",
+        "media_width": "wide",
+        "media_height": "60svh",
         "section_width": "full-width",
         "extend_media": true,
         "color_scheme": "scheme-1",
