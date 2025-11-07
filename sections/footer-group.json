@@ -114,7 +114,7 @@
         "menu_8tJbUk": {
           "type": "menu",
           "settings": {
-            "menu": "footer",
+            "menu": "footer-shop",
             "heading": "Shop",
             "menu_spacing": 12,
             "show_as_accordion": false,
