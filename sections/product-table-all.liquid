@@ -14,7 +14,7 @@
           {% if section.settings.show_variant_ids %}<th>Variant IDs</th>{% endif %}
           {% if section.settings.show_tags %}<th>Tags</th>{% endif %}
           {% if section.settings.show_collections %}<th>Collections</th>{% endif %}
-          {% if section.settings.show_collections %}<th>Discription</th>{% endif %}
+          {% if section.settings.show_discription %}<th>Discription</th>{% endif %}
           {% if section.settings.show_images %}<th>Image URL</th>{% endif %}
           {% if section.settings.show_image_name %}<th>Image Name</th>{% endif %}
           {% if section.settings.show_image_format %}<th>Image Format</th>{% endif %}
@@ -117,7 +117,7 @@
                   {% endif %}
                 </td>
               {% endif %}
-              {% if section.settings.show_collections %}
+              {% if section.settings.show_discription %}
                 <td>
                   {% if product.collections.size > 0 %}
                     {% for coll in product.collections %}
