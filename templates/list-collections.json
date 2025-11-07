@@ -12,7 +12,7 @@
     "product_table_all_XxeyCX": {
       "type": "product-table-all",
       "blocks": {
-        "index_zaWQfB": {
+        "index_cgGXie": {
           "type": "index",
           "settings": {
             "column_label": "#"
@@ -32,7 +32,7 @@
         }
       },
       "block_order": [
-        "index_zaWQfB",
+        "index_cgGXie",
         "title_CfyyG7",
         "description_EDtTzg"
       ],

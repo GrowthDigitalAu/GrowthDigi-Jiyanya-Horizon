@@ -1,0 +1,120 @@
+<div id="live-view-counter-{{ section.id }}" class="live-view-message">
+  {% case block.settings.icon_type %}
+    {% when 'image' %}
+      {% if block.settings.icon_image != blank %}
+        <img
+          src="{{ block.settings.icon_image | img_url: 'master' }}"
+          alt="view icon"
+          class="live-view-icon"
+          style="width: {{ block.settings.icon_width }}px;"
+          loading="lazy"
+        >
+      {% endif %}
+
+    {% when 'svg' %}
+      {% if block.settings.custom_svg != blank %}
+        <div class="live-view-icon" style="width: {{ block.settings.icon_width }}px;">
+          {{ block.settings.custom_svg }}
+        </div>
+      {% else %}
+        <!-- Default SVG if no custom SVG code is added -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="live-view-icon"
+          style="width: {{ block.settings.icon_width }}px;">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.259 4.5 12 4.5c4.741 0 8.577 3.01 9.964 7.183.07.206.07.433 0 .639C20.577 16.49 16.741 19.5 12 19.5c-4.741 0-8.577-3.01-9.964-7.178z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      {% endif %}
+
+    {% when 'none' %}
+      {# No icon shown #}
+  {% endcase %}
+
+  <span id="viewer-count-{{ section.id }}"></span>
+  people are viewing this right now.
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const min = {{ block.settings.min_viewers }};
+    const max = {{ block.settings.max_viewers }};
+    const counterEl = document.getElementById("viewer-count-{{ section.id }}");
+
+    function randomViewerCount() {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function updateViewerCount() {
+      if (counterEl) {
+        counterEl.textContent = randomViewerCount();
+      }
+    }
+
+    updateViewerCount();
+    setInterval(updateViewerCount, Math.floor(Math.random() * 7000) + 8000);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Live View Counter",
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon_type",
+      "label": "Icon Type",
+      "default": "svg",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "svg", "label": "SVG (Custom or Default)" },
+        { "value": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "custom_svg",
+      "label": "Custom SVG Code",
+      "info": "Paste your SVG code here (only used if 'SVG' type is selected). Leave blank to use the default eye icon."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Upload Icon Image",
+      "info": "Used only if 'Image' type is selected."
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "label": "Icon Width (px)",
+      "default": 20,
+      "min": 10,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "min_viewers",
+      "label": "Minimum Viewers",
+      "default": 10,
+      "min": 1,
+      "max": 50,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "max_viewers",
+      "label": "Maximum Viewers",
+      "default": 45,
+      "min": 10,
+      "max": 100,
+      "step": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Live View Counter"
+    }
+  ]
+}
+{% endschema %}

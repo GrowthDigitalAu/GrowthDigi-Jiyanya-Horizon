@@ -1,0 +1,23 @@
+  .live-view-message {
+      font-size: 15px;
+      color: #e63946;
+      font-weight: 500;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  }
+
+  .live-view-icon {
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+  }
+
+  .live-view-icon svg {
+      display: block;
+      width: 100%;
+      height: auto;
+  }
