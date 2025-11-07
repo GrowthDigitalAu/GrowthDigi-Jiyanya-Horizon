@@ -21,7 +21,8 @@
         "show_variants": false,
         "show_variant_ids": false,
         "show_tags": false,
-        "show_collections": false,
+        "show_collections": true,
+        "show_discription": true,
         "show_images": false,
         "show_image_name": false,
         "show_image_format": false
