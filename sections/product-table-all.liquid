@@ -120,7 +120,7 @@
               {% if section.settings.show_description %}
                 <td>
                   {% if product.description != blank %}
-                    {{ product.description | strip_html | truncate: 150 }}
+                    {{ product.description | strip_html }}
                   {% else %}
                     No Description
                   {% endif %}
