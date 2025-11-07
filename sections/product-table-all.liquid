@@ -118,14 +118,14 @@
                 </td>
               {% endif %}
               {% if section.settings.show_description %}
-  <td>
-    {% if product.description != blank %}
-      {{ product.description | strip_html | truncate: 150 }}
-    {% else %}
-      No Description
-    {% endif %}
-  </td>
-{% endif %}
+                <td>
+                  {% if product.description != blank %}
+                    {{ product.description | strip_html | truncate: 150 }}
+                  {% else %}
+                    No Description
+                  {% endif %}
+                </td>
+              {% endif %}
 
               {% if section.settings.show_images %}
                 <td>
