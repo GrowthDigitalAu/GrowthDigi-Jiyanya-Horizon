@@ -25,6 +25,7 @@
   {% assign counter = 0 %}
   {%- paginate selected_collection.products by 1000 -%}
     {% for product in selected_collection.products %}
+      {% if product.price < 1 %}
       {% assign counter = counter | plus: 1 %}
       <tr>
         {% for block in section.blocks %}
@@ -147,6 +148,7 @@
           </td>
         {% endfor %}
       </tr>
+      {% endif %}
     {% endfor %}
   {%- endpaginate -%}
 </tbody>
