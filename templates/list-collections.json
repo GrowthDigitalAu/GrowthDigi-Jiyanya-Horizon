@@ -24,16 +24,35 @@
             "column_label": "Product Title"
           }
         },
+        "handle_TtCxRe": {
+          "type": "handle",
+          "settings": {
+            "column_label": "Product Handle"
+          }
+        },
         "price_wNgpJz": {
           "type": "price",
           "settings": {
             "column_label": "Product Price"
           }
         },
+        "options_7WfX4b": {
+          "type": "options",
+          "settings": {
+            "column_label": "Options"
+          }
+        },
         "id_kxzGd9": {
           "type": "id",
           "settings": {
             "column_label": "Product ID"
+          }
+        },
+        "variants_4MnECi": {
+          "type": "variants",
+          "disabled": true,
+          "settings": {
+            "column_label": "Variants"
           }
         },
         "tags_hhhEzP": {
@@ -59,8 +78,11 @@
       "block_order": [
         "index_cgGXie",
         "title_CfyyG7",
+        "handle_TtCxRe",
         "price_wNgpJz",
+        "options_7WfX4b",
         "id_kxzGd9",
+        "variants_4MnECi",
         "tags_hhhEzP",
         "collections_HCEUqd",
         "description_EDtTzg"
