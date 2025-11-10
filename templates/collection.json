@@ -42,6 +42,12 @@
             "column_label": "Tags"
           }
         },
+        "options_CM8cWw": {
+          "type": "options",
+          "settings": {
+            "column_label": "Options"
+          }
+        },
         "collections_yGXUCC": {
           "type": "collections",
           "settings": {
@@ -55,6 +61,7 @@
         "id_TrBiq4",
         "price_AbAJ4z",
         "tags_M7jMeh",
+        "options_CM8cWw",
         "collections_yGXUCC"
       ],
       "name": "Collection Product Table",
