@@ -21,137 +21,136 @@
             {% endfor %}
           </tr>
         </thead>
-        <tbody>
-          {% assign counter = 0 %}
-          {% for product in selected_collection.products %}
-            {% assign counter = counter | plus: 1 %}
-            <tr>
-              {% for block in section.blocks %}
-                <td>
-                  {% case block.type %}
-                    {% when 'index' %}
-                      {{ counter }}
-
-                    {% when 'title' %}
-                      <a href="{{ product.url }}" target="_blank">{{ product.title }}</a>
-
-                    {% when 'url' %}
-                      <a href="{{ product.url }}" target="_blank">{{ product.url }}</a>
-
-                    {% when 'id' %}
-                      <a
-                        href="https://admin.shopify.com/store/{{ shop.permanent_domain | remove: '.myshopify.com' }}/products/{{ product.id }}"
-                        target="_blank"
-                      >
-                        {{ product.id }}
-                      </a>
-                    {% when 'handle' %}
-                      {{ product.handle }}
-
-                    {% when 'price' %}
-                      {% if product.price %}
-                        {{ product.price | money }}
-                      {% else %}
-                        No Price
-                      {% endif %}
-
-                    {% when 'options' %}
-                      {% if product.options_with_values.size > 0 %}
-                        {% for option in product.options_with_values %}
-                          <strong>{{ option.name }}:</strong> {{ option.values | join: ', ' }}
-                          {% unless forloop.last %}<br>{% endunless %}
+    <tbody>
+  {% assign counter = 0 %}
+  {%- paginate selected_collection.products by 1000 -%}
+    {% for product in selected_collection.products %}
+      {% assign counter = counter | plus: 1 %}
+      <tr>
+        {% for block in section.blocks %}
+          <td>
+            {% case block.type %}
+              {% when 'index' %}
+                {{ counter }}
+              {% when 'title' %}
+                <a href="{{ product.url }}" target="_blank">{{ product.title }}</a>
+              {% when 'url' %}
+                <a href="{{ product.url }}" target="_blank">{{ product.url }}</a>
+              {% when 'id' %}
+                <a
+                  href="https://admin.shopify.com/store/{{ shop.permanent_domain | remove: '.myshopify.com' }}/products/{{ product.id }}"
+                  target="_blank"
+                >
+                  {{ product.id }}
+                </a>
+              {% when 'handle' %}
+                {{ product.handle }}
+              {% when 'price' %}
+                {% if product.price %}
+                  {{ product.price | money }}
+                {% else %}
+                  No Price
+                {% endif %}
+              {% when 'options' %}
+                {% if product.variants.size > 0 %}
+                  <ul>
+                    {% for variant in product.variants %}
+                      <li>
+                        {% for option_name in product.options %}
+                          <strong>{{ option_name }}:</strong>
+                          {{ variant.options[forloop.index0] }}
+                          {% unless forloop.last %} / {% endunless %}
                         {% endfor %}
-                      {% else %}
-                        No Options
-                      {% endif %}
+                        — {{ variant.price | money }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  No Options
+                {% endif %}
+              {% when 'variants' %}
+                {% if product.variants.size > 0 %}
+                  <ul>
+                    {% for variant in product.variants %}
+                      <li>{{ variant.title }}</li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  No Variants
+                {% endif %}
+              {% when 'variant_ids' %}
+                {% if product.variants.size > 0 %}
+                  {% for variant in product.variants %}
+                    <a
+                      href="https://admin.shopify.com/store/{{ shop.permanent_domain | remove: '.myshopify.com' }}/products/{{ product.id }}/variants/{{ variant.id }}"
+                      target="_blank"
+                    >
+                      {{ variant.id }}
+                    </a>
+                    {% unless forloop.last %}<br>{% endunless %}
+                  {% endfor %}
+                {% else %}
+                  No Variant IDs
+                {% endif %}
+              {% when 'tags' %}
+                {% if product.tags.size > 0 %}
+                  {{ product.tags | join: ', ' }}
+                {% else %}
+                  No Tags
+                {% endif %}
+              {% when 'collections' %}
+                {% if product.collections.size > 0 %}
+                  {% for coll in product.collections %}
+                    <a href="{{ coll.url }}" target="_blank">{{ coll.title }}</a>
+                    {% unless forloop.last %}, {% endunless %}
+                  {% endfor %}
+                {% else %}
+                  No Collections
+                {% endif %}
+              {% when 'image_url' %}
+                {% if product.images.size > 0 %}
+                  {% for image in product.images %}
+                    <a href="{{ image.src | img_url: 'master' }}" target="_blank">{{ image.src }}</a>
+                    {% unless forloop.last %}<br>{% endunless %}
+                  {% endfor %}
+                {% else %}
+                  No Images
+                {% endif %}
+              {% when 'image_name' %}
+                {% if product.images.size > 0 %}
+                  {% for image in product.images %}
+                    {% assign img_last = image.src | split: '/' | last %}
+                    {% assign img_clean = img_last | split: '?' | first %}
+                    {% assign name_without_ext = img_clean
+                      | replace: '.jpg', ''
+                      | replace: '.jpeg', ''
+                      | replace: '.png', ''
+                      | replace: '.webp', ''
+                      | replace: '.gif', ''
+                    %}
+                    {{ name_without_ext }}
+                    {% unless forloop.last %}<br>{% endunless %}
+                  {% endfor %}
+                {% else %}
+                  No Images
+                {% endif %}
+              {% when 'image_format' %}
+                {% if product.images.size > 0 %}
+                  {% for image in product.images %}
+                    {{ image.src | split: '.' | last | split: '?' | first }}
+                    {% unless forloop.last %}<br>{% endunless %}
+                  {% endfor %}
+                {% else %}
+                  No Images
+                {% endif %}
+            {% endcase %}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  {%- endpaginate -%}
+</tbody>
 
-                    {% when 'variants' %}
-                      {% if product.variants.size > 0 %}
-                        <ul>
-                          {% for variant in product.variants %}
-                            <li>{{ variant.title }}</li>
-                          {% endfor %}
-                        </ul>
-                      {% else %}
-                        No Variants
-                      {% endif %}
-
-                    {% when 'variant_ids' %}
-                      {% if product.variants.size > 0 %}
-                        {% for variant in product.variants %}
-                          <a
-                            href="https://admin.shopify.com/store/{{ shop.permanent_domain | remove: '.myshopify.com' }}/products/{{ product.id }}/variants/{{ variant.id }}"
-                            target="_blank"
-                          >
-                            {{ variant.id }}
-                          </a>
-                          {% unless forloop.last %}<br>{% endunless %}
-                        {% endfor %}
-                      {% else %}
-                        No Variant IDs
-                      {% endif %}
-
-                    {% when 'tags' %}
-                      {% if product.tags.size > 0 %}
-                        {{ product.tags | join: ', ' }}
-                      {% else %}
-                        No Tags
-                      {% endif %}
-
-                    {% when 'collections' %}
-                      {% if product.collections.size > 0 %}
-                        {% for coll in product.collections %}
-                          <a href="{{ coll.url }}" target="_blank">{{ coll.title }}</a>
-                          {% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                      {% else %}
-                        No Collections
-                      {% endif %}
-
-                    {% when 'image_url' %}
-                      {% if product.images.size > 0 %}
-                        {% for image in product.images %}
-                          <a href="{{ image.src | img_url: 'master' }}" target="_blank">{{ image.src }}</a>
-                          {% unless forloop.last %}<br>{% endunless %}
-                        {% endfor %}
-                      {% else %}
-                        No Images
-                      {% endif %}
-
-                    {% when 'image_name' %}
-                      {% if product.images.size > 0 %}
-                        {% for image in product.images %}
-                          {% assign img_last = image.src | split: '/' | last %}
-                          {% assign img_clean = img_last | split: '?' | first %}
-                          {% assign name_without_ext = img_clean
-                            | replace: '.jpg', ''
-                            | replace: '.jpeg', ''
-                            | replace: '.png', ''
-                            | replace: '.webp', ''
-                            | replace: '.gif', ''
-                          %}
-                          {{ name_without_ext }}
-                          {% unless forloop.last %}<br>{% endunless %}
-                        {% endfor %}
-                      {% else %}
-                        No Images
-                      {% endif %}
-
-                    {% when 'image_format' %}
-                      {% if product.images.size > 0 %}
-                        {% for image in product.images %}
-                          {{ image.src | split: '.' | last | split: '?' | first }}
-                          {% unless forloop.last %}<br>{% endunless %}
-                        {% endfor %}
-                      {% else %}
-                        No Images
-                      {% endif %}
-                  {% endcase %}
-                </td>
-              {% endfor %}
-            </tr>
-          {% endfor %}
-        </tbody>
       </table>
     </div>
   {% else %}
