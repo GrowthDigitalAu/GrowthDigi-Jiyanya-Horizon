@@ -63,6 +63,7 @@
         },
         "collections_HCEUqd": {
           "type": "collections",
+          "disabled": true,
           "settings": {
             "column_label": "Collections"
           }
