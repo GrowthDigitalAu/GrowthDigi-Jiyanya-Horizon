@@ -46,7 +46,7 @@
               {% when 'handle' %}
                 {{ product.handle }}
               {% when 'price' %}
-                {% if product.price %}
+                {% if product.price < 1 %}
                   {{ product.price | money }}
                 {% else %}
                   No Price
