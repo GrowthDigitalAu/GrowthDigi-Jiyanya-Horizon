@@ -26,6 +26,7 @@
         },
         "handle_qxUjtD": {
           "type": "handle",
+          "disabled": true,
           "settings": {
             "column_label": "Product Handle"
           }
@@ -50,12 +51,14 @@
         },
         "options_CM8cWw": {
           "type": "options",
+          "disabled": true,
           "settings": {
             "column_label": "Options"
           }
         },
         "collections_yGXUCC": {
           "type": "collections",
+          "disabled": true,
           "settings": {
             "column_label": "Collections"
           }
