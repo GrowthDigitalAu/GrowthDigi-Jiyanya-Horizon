@@ -238,18 +238,16 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "agate-slices",
           "bracelets",
           "carvings",
           "chips",
           "clearance",
           "crystal-figurines",
-          "crystal-kits",
-          "free-forms",
           "hangings",
           "hearts",
           "journal-notebook",
-          "minerals"
+          "orgone",
+          "palm-stones"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
