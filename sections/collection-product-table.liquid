@@ -45,7 +45,9 @@
                       >
                         {{ product.id }}
                       </a>
-
+                    {% when 'handle' %}
+                      {{ product.handle }}
+                      
                     {% when 'price' %}
                       {% if product.price %}
                         {{ product.price | money }}
