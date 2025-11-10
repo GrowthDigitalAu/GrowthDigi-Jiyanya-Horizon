@@ -59,12 +59,18 @@
                       {% if product.variants.size > 0 %}
                         <ul>
                           {% for variant in product.variants %}
-                            <li>{{ variant.title }}</li>
+                            <li>
+                              {{ variant.title }}
+                              {% if variant.price %}
+                                — {{ variant.price | money }}
+                              {% endif %}
+                            </li>
                           {% endfor %}
                         </ul>
                       {% else %}
                         No Variants
                       {% endif %}
+                      
                     {% when 'handle' %}
                       {{ product.handle }}
                     {% when 'variant_ids' %}
