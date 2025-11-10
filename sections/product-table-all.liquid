@@ -46,11 +46,19 @@
                         No Price
                       {% endif %}
                     {% when 'options' %}
-                      {% if product.options_with_values.size > 0 %}
-                        {% for option in product.options_with_values %}
-                          <strong>{{ option.name }}:</strong> {{ option.values | join: ', ' }}
-                          {% unless forloop.last %}<br>{% endunless %}
-                        {% endfor %}
+                      {% if product.variants.size > 0 %}
+                        <ul>
+                          {% for variant in product.variants %}
+                            <li>
+                              {% for option_name in product.options %}
+                                <strong>{{ option_name }}:</strong>
+                                {{ variant.options[forloop.index0] }}
+                                {% unless forloop.last %} / {% endunless %}
+                              {% endfor %}
+                              — {{ variant.price | money }}
+                            </li>
+                          {% endfor %}
+                        </ul>
                       {% else %}
                         No Options
                       {% endif %}
@@ -70,7 +78,7 @@
                       {% else %}
                         No Variants
                       {% endif %}
-                      
+
                     {% when 'handle' %}
                       {{ product.handle }}
                     {% when 'variant_ids' %}
