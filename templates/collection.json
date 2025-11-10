@@ -24,6 +24,12 @@
             "column_label": "Product Title"
           }
         },
+        "handle_qxUjtD": {
+          "type": "handle",
+          "settings": {
+            "column_label": "Product Handle"
+          }
+        },
         "id_TrBiq4": {
           "type": "id",
           "settings": {
@@ -58,6 +64,7 @@
       "block_order": [
         "index_TL3aeN",
         "title_kh7Gzw",
+        "handle_qxUjtD",
         "id_TrBiq4",
         "price_AbAJ4z",
         "tags_M7jMeh",
