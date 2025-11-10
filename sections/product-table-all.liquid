@@ -39,12 +39,12 @@
                       >
                         {{ product.id }}
                       </a>
-{% when 'price' %}
-  {% if product.price %}
-    {{ product.price | money }}
-  {% else %}
-    No Price
-  {% endif %}
+                    {% when 'price' %}
+                      {% if product.price %}
+                        {{ product.price | money }}
+                      {% else %}
+                        No Price
+                      {% endif %}
                     {% when 'options' %}
                       {% if product.options_with_values.size > 0 %}
                         {% for option in product.options_with_values %}
