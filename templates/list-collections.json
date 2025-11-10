@@ -24,6 +24,12 @@
             "column_label": "Product Title"
           }
         },
+        "price_wNgpJz": {
+          "type": "price",
+          "settings": {
+            "column_label": "Product Price"
+          }
+        },
         "id_kxzGd9": {
           "type": "id",
           "settings": {
@@ -53,6 +59,7 @@
       "block_order": [
         "index_cgGXie",
         "title_CfyyG7",
+        "price_wNgpJz",
         "id_kxzGd9",
         "tags_hhhEzP",
         "collections_HCEUqd",
