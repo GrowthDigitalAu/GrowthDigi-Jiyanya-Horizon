@@ -24,8 +24,27 @@
             "column_label": "Product Title"
           }
         },
+        "id_kxzGd9": {
+          "type": "id",
+          "settings": {
+            "column_label": "Product ID"
+          }
+        },
+        "tags_hhhEzP": {
+          "type": "tags",
+          "settings": {
+            "column_label": "Tags"
+          }
+        },
+        "collections_HCEUqd": {
+          "type": "collections",
+          "settings": {
+            "column_label": "Collections"
+          }
+        },
         "description_EDtTzg": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "column_label": "Description"
           }
@@ -34,6 +53,9 @@
       "block_order": [
         "index_cgGXie",
         "title_CfyyG7",
+        "id_kxzGd9",
+        "tags_hhhEzP",
+        "collections_HCEUqd",
         "description_EDtTzg"
       ],
       "name": "Product Table All",
