@@ -39,12 +39,14 @@
         },
         "price_AbAJ4z": {
           "type": "price",
+          "disabled": true,
           "settings": {
             "column_label": "Product Price"
           }
         },
         "tags_M7jMeh": {
           "type": "tags",
+          "disabled": true,
           "settings": {
             "column_label": "Tags"
           }
