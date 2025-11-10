@@ -159,7 +159,7 @@
                   "type": "product-description",
                   "name": "t:names.product_description",
                   "settings": {
-                    "text": "<p>{{ closest.product.description }}</p>",
+                    "text": "{{ closest.product.description }}",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -297,7 +297,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Product Details",
-                    "open_by_default": true,
+                    "open_by_default": false,
                     "icon": "none",
                     "width": 20
                   },
