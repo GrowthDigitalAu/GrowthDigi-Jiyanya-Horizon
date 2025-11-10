@@ -26,18 +26,21 @@
         },
         "handle_TtCxRe": {
           "type": "handle",
+          "disabled": true,
           "settings": {
             "column_label": "Product Handle"
           }
         },
         "price_wNgpJz": {
           "type": "price",
+          "disabled": true,
           "settings": {
             "column_label": "Product Price"
           }
         },
         "options_7WfX4b": {
           "type": "options",
+          "disabled": true,
           "settings": {
             "column_label": "Options"
           }
@@ -70,7 +73,6 @@
         },
         "description_EDtTzg": {
           "type": "description",
-          "disabled": true,
           "settings": {
             "column_label": "Description"
           }
@@ -88,7 +90,6 @@
         "collections_HCEUqd",
         "description_EDtTzg"
       ],
-      "disabled": true,
       "name": "Product Table All",
       "settings": {}
     },
