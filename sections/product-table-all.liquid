@@ -65,7 +65,8 @@
                       {% else %}
                         No Variants
                       {% endif %}
-
+                    {% when 'handle' %}
+                      {{ product.handle }}
                     {% when 'variant_ids' %}
                       {% if product.variants.size > 0 %}
                         {% for variant in product.variants %}
