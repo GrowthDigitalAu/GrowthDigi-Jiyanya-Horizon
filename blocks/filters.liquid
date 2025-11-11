@@ -16,7 +16,7 @@
 {%- liquid
   assign block_settings = block.settings
   assign products_count = results_size
-  assign sort_by = results.sort_by | default: title-ascending
+  assign sort_by = results.sort_by | default: 'title-ascending'
   assign filters = filters | default: results.filters
   assign total_active_values = 0
 
