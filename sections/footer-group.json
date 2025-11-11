@@ -527,7 +527,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p><a href=\"mailto:sales@jiyanyacrystals.com\" target=\"_blank\" title=\"mailto:sales@jiyanyacrystals.com\">sales@jiyanyacrystals.com</a></p>",
+                        "text": "<p>jiyanyacrystals@gmail.com</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
