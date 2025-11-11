@@ -377,6 +377,14 @@
                 "accordion_row_4rKjin",
                 "accordion_row_Wdn3Gf"
               ]
+            },
+            "custom_liquid_zhLmcV": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{% for tag in product.tags %}\n  <li><a href=\"/collections/all/{{ tag | handleize }}\">{{ tag }}</a></li>\n  {% endfor %}"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -385,7 +393,8 @@
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "payment_icons_cVtV37",
-            "accordion_GmxwYa"
+            "accordion_GmxwYa",
+            "custom_liquid_zhLmcV"
           ]
         }
       },
