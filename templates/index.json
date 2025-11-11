@@ -53,6 +53,21 @@
           },
           "blocks": {}
         },
+        "button_NWnLpR": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Contact Us",
+            "link": "https://maps.app.goo.gl/orQHSv9jHFnPmNDs6",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "custom",
+            "custom_width": 15,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
         "text_BY8rNM": {
           "type": "text",
           "name": "t:names.text",
@@ -84,6 +99,7 @@
       "block_order": [
         "text_YLPk4p",
         "button_H9gpTf",
+        "button_NWnLpR",
         "text_BY8rNM"
       ],
       "name": "t:names.hero",
