@@ -182,7 +182,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Our Popular Categories</p>",
+                "text": "<p>Shop by Categories</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
