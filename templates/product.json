@@ -382,7 +382,7 @@
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
-                "custom_liquid": "<ul class=\"product-tags\">\n  {% for tag in product.tags %}\n    <li>\n      <a class=\"tag-button\" href=\"/collections/all/{{ tag | handleize }}\">\n        {{ tag }}\n      </a>\n    </li>\n  {% endfor %}\n</ul>"
+                "custom_liquid": "<div class=\"product-tags\">\n  {% for tag in product.tags %}\n    <a class=\"tag-button\" href=\"/collections/all/{{ tag | handleize }}\">\n      {{ tag }}\n    </a>\n  {% endfor %}\n</div>"
               },
               "blocks": {}
             }
