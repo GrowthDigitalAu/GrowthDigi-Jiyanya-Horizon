@@ -359,7 +359,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>24 Lamonda Street<br/>Tarneit Victoria 3029<br/>Australia</p>",
+                        "text": "<p>8/20 Prosperity Street, Truganina, Vic 3029</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
