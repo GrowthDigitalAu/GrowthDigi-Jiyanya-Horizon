@@ -59,7 +59,7 @@
           "settings": {
             "label": "Google Map",
             "link": "https://maps.app.goo.gl/orQHSv9jHFnPmNDs6",
-            "open_in_new_tab": false,
+            "open_in_new_tab": true,
             "style_class": "button-secondary",
             "width": "custom",
             "custom_width": 15,
