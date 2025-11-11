@@ -41,14 +41,13 @@
         "button_H9gpTf": {
           "type": "button",
           "name": "t:names.button",
-          "disabled": true,
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
+            "label": "Contact Us",
+            "link": "shopify://pages/contact",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
+            "width": "custom",
+            "custom_width": 15,
             "width_mobile": "fit-content",
             "custom_width_mobile": 100
           },
@@ -109,7 +108,7 @@
         "section_width": "page-width",
         "section_height": "large",
         "section_height_custom": 50,
-        "color_scheme": "scheme-6",
+        "color_scheme": "scheme-5",
         "toggle_overlay": true,
         "overlay_color": "rgba(0,0,0,0)",
         "overlay_style": "solid",
