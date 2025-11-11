@@ -57,7 +57,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Contact Us",
+            "label": "Google Map",
             "link": "https://maps.app.goo.gl/orQHSv9jHFnPmNDs6",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
