@@ -475,6 +475,9 @@ p:empty {
     /* stylelint-disable-next-line declaration-no-important */
     display: none !important;
   }
+  .main_menu_desktop_new {
+    display: none !important;
+  }
 }
 
 @media screen and (min-width: 750px) {
