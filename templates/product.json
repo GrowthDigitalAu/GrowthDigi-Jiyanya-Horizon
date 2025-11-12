@@ -618,6 +618,7 @@
             "text_RHR9JK": {
               "type": "text",
               "name": "t:names.heading",
+              "disabled": true,
               "settings": {
                 "text": "<h2>Our signature product</h2>",
                 "width": "fit-content",
@@ -643,6 +644,7 @@
             },
             "text_d6Ej87": {
               "type": "text",
+              "disabled": true,
               "settings": {
                 "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.</p>",
                 "width": "fit-content",
@@ -668,6 +670,7 @@
             },
             "button_6CJr9P": {
               "type": "button",
+              "disabled": true,
               "settings": {
                 "label": "Shop now",
                 "link": "shopify://collections/all",
@@ -679,12 +682,39 @@
                 "custom_width_mobile": 100
               },
               "blocks": {}
+            },
+            "email_signup_LTPLUK": {
+              "type": "email-signup",
+              "name": "t:names.email_signup",
+              "settings": {
+                "width": "fill",
+                "custom_width": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "heading": "Join Our Newsletter - Get updates, Offers and Invites",
+                "heading_preset": "h4",
+                "border_style": "underline",
+                "border_width": 2,
+                "border_radius": 100,
+                "input_type_preset": "paragraph",
+                "style_class": "button",
+                "display_type": "arrow",
+                "label": "Sign up",
+                "integrated_button": false,
+                "button_type_preset": "paragraph",
+                "padding-block-start": 15,
+                "padding-block-end": 15,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_RHR9JK",
             "text_d6Ej87",
-            "button_6CJr9P"
+            "button_6CJr9P",
+            "email_signup_LTPLUK"
           ]
         }
       },
