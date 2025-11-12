@@ -4443,3 +4443,38 @@ text-component {
   font-family: inherit;
   font-size: 15px;
 }
+
+/* Dropdown Arrow for parent links */
+.main_menu_desktop_new .dropdown-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  transform: rotate(0deg);
+}
+
+/* Submenu arrow (right side) */
+.main_menu_desktop_new .sub-arrow {
+  transform: rotate(-90deg) !important;
+}
+
+/* Animate arrow on hover */
+.main_menu_desktop_new li:hover > a > .dropdown-arrow {
+  transform: rotate(0deg);
+}
+
+/* Keep alignment clean */
+.main_menu_desktop_new a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-arrow svg {
+    width: 12px;
+    height: auto;
+}
+
+.main_menu_desktop_new .sub-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
