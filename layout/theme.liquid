@@ -65,5 +65,11 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+    <style>
+      [data-menu-grid-id="MegaMenuList-3"] {
+    --menu-columns-desktop: 3;
+    --menu-columns-tablet: 4;
+}
+    </style>
   </body>
 </html>
