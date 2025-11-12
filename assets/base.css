@@ -4486,3 +4486,9 @@ text-component {
 .collection-card {
     height: 100%;
 }
+@media screen and (max-width: 1025px) {
+    .header__columns header-actions {
+        grid-area: rightB;
+        justify-self: flex-end;
+    }
+}
