@@ -4359,6 +4359,8 @@ text-component {
   display: flex;
   gap: 20px; /* spacing between main items */
   position: relative;
+  flex-wrap: wrap;
+    justify-content: center;
 }
 
 .main_menu_desktop_new > li {
