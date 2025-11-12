@@ -418,7 +418,7 @@
     border-bottom: var(--border-bottom-width) solid var(--color-border);
   }
 
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 1025px) {
     .header__row--top:not(.divider--page-width),
     .header__row--top.divider--page-width .header__columns {
       border-bottom-width: var(--border-bottom-width-mobile);
@@ -439,7 +439,7 @@
     align-items: center;
 
     /* on mobile, header__column nodes are ignored to create a new grid-template-area based on all visible content */
-    @media screen and (max-width: 749px) {
+    @media screen and (max-width: 1025px) {
       display: contents;
     }
   }
@@ -512,7 +512,7 @@
       }
     }
 
-    @media screen and (max-width: 749px) {
+    @media screen and (max-width: 1025px) {
       --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr
         var(--header-mobile-bookend) var(--header-mobile-bookend);
 
