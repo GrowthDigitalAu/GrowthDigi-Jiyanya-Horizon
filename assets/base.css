@@ -4354,7 +4354,7 @@ text-component {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 10px; /* spacing between main items */
+  gap: 20px; /* spacing between main items */
   position: relative;
 }
 
@@ -4443,4 +4443,3 @@ text-component {
   font-family: inherit;
   font-size: 15px;
 }
-
