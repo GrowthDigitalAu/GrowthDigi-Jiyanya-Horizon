@@ -4483,3 +4483,6 @@ text-component {
     align-items: center;
     justify-content: space-between;
 }
+.collection-card {
+    height: 100%;
+}
