@@ -72,6 +72,41 @@
         fetchpriority="low"
       ></script>
     </header-menu>
+
+
+{% comment %} New Desktop Menu  {% endcomment %}
+ {% assign main_menu = linklists[block_settings.menu] %}
+
+{% if main_menu.links.size > 0 %}
+  <ul class="main-menu">
+    {% for link in main_menu.links %}
+      <li class="menu-item {% if link.active %}active{% endif %}">
+        <a href="{{ link.url }}">{{ link.title }}</a>
+
+        {% if link.links.size > 0 %}
+          <ul class="sub-menu">
+            {% for sub_link in link.links %}
+              <li class="submenu-item {% if sub_link.active %}active{% endif %}">
+                <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+
+                {% if sub_link.links.size > 0 %}
+                  <ul class="third-level-menu">
+                    {% for third_link in sub_link.links %}
+                      <li class="thirdmenu-item {% if third_link.active %}active{% endif %}">
+                        <a href="{{ third_link.url }}">{{ third_link.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% comment %} New Desktop Menu  {% endcomment %}
 {% endcase %}
 
 {% stylesheet %}
