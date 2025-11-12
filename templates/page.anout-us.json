@@ -65,7 +65,7 @@
           "settings": {
             "image": "shopify://shop_images/AdobeStock_299656827_1.jpg",
             "link": "",
-            "image_ratio": "square",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
