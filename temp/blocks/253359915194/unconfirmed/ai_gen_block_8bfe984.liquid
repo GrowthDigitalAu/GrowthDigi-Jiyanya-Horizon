@@ -1,6 +1,546 @@
+{% doc %}
+  @prompt
+    replicate a clean, modern category overview using rounded purple cards with bold titles, item counts, and a right-side arrow button; provide full theme-editor controls so non-technical merchants can adjust layout, colors, spacing, and which collections appear.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-category-overview-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding_top }}px 0 {{ block.settings.section_padding_bottom }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-category-overview__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-category-overview__heading-{{ ai_gen_id }} {
+    text-align: {{ block.settings.heading_alignment }};
+    margin-bottom: {{ block.settings.heading_spacing }}px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-category-overview__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .ai-category-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: {{ block.settings.card_shadow_horizontal }}px {{ block.settings.card_shadow_vertical }}px {{ block.settings.card_shadow_blur }}px {{ block.settings.card_shadow_color }};
+  }
+
+  .ai-category-card-{{ ai_gen_id }}:hover {
+    transform: translateY({{ block.settings.hover_lift }}px);
+    box-shadow: {{ block.settings.card_shadow_horizontal }}px {{ block.settings.card_shadow_vertical | plus: 4 }}px {{ block.settings.card_shadow_blur | plus: 8 }}px {{ block.settings.card_shadow_color }};
+  }
+
+  .ai-category-card__content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .ai-category-card__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_title_size }}px;
+    font-weight: {{ block.settings.card_title_weight }};
+    color: {{ block.settings.card_title_color }};
+    margin: 0 0 {{ block.settings.title_spacing }}px;
+  }
+
+  .ai-category-card__count-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_count_size }}px;
+    color: {{ block.settings.card_count_color }};
+    margin: 0;
+  }
+
+  .ai-category-card__arrow-{{ ai_gen_id }} {
+    width: {{ block.settings.arrow_size }}px;
+    height: {{ block.settings.arrow_size }}px;
+    background-color: {{ block.settings.arrow_background }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-category-card-{{ ai_gen_id }}:hover .ai-category-card__arrow-{{ ai_gen_id }} {
+    background-color: {{ block.settings.arrow_hover_background }};
+  }
+
+  .ai-category-card__arrow-{{ ai_gen_id }} svg {
+    width: {{ block.settings.arrow_icon_size }}px;
+    height: {{ block.settings.arrow_icon_size }}px;
+    stroke: {{ block.settings.arrow_color }};
+    stroke-width: 2;
+  }
+
+  .ai-category-card-{{ ai_gen_id }}:hover .ai-category-card__arrow-{{ ai_gen_id }} svg {
+    stroke: {{ block.settings.arrow_hover_color }};
+  }
+
+  .ai-category-overview__empty-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    color: {{ block.settings.card_count_color }};
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-category-overview__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-category-overview__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-category-overview__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+
+    .ai-category-card__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.card_title_size | times: 0.9 }}px;
+    }
+
+    .ai-category-card-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-category-overview-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-category-overview__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-category-overview__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    {% if block.settings.collection_list != blank %}
+      <div class="ai-category-overview__grid-{{ ai_gen_id }}">
+        {% for collection in block.settings.collection_list %}
+          <a href="{{ collection.url }}" class="ai-category-card-{{ ai_gen_id }}">
+            <div class="ai-category-card__content-{{ ai_gen_id }}">
+              <h3 class="ai-category-card__title-{{ ai_gen_id }}">{{ collection.title }}</h3>
+              <p class="ai-category-card__count-{{ ai_gen_id }}">
+                {{ collection.products_count }}
+                {% if collection.products_count == 1 %}
+                  {{ block.settings.item_text_singular }}
+                {% else %}
+                  {{ block.settings.item_text_plural }}
+                {% endif %}
+              </p>
+            </div>
+            <div class="ai-category-card__arrow-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="ai-category-overview__empty-{{ ai_gen_id }}">
+        Select collections to display in the theme editor
+      </div>
+    {% endif %}
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Category overview",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "Collections",
+      "limit": 12
+    },
+    {
+      "type": "text",
+      "id": "item_text_singular",
+      "label": "Item text (singular)",
+      "default": "item"
+    },
+    {
+      "type": "text",
+      "id": "item_text_plural",
+      "label": "Item text (plural)",
+      "default": "items"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 600,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns on tablet",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap between cards",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Heading style"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#8B5CF6"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "hover_lift",
+      "min": -10,
+      "max": 0,
+      "step": 1,
+      "unit": "px",
+      "label": "Hover lift",
+      "default": -4
+    },
+    {
+      "type": "header",
+      "content": "Card shadow"
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_horizontal",
+      "min": -20,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Horizontal offset",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_vertical",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical offset",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_blur",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Blur",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "card_shadow_color",
+      "label": "Shadow color",
+      "default": "#00000026"
+    },
+    {
+      "type": "header",
+      "content": "Card title"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "card_title_weight",
+      "label": "Weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Item count"
+    },
+    {
+      "type": "range",
+      "id": "card_count_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "card_count_color",
+      "label": "Color",
+      "default": "#E9D5FF"
+    },
+    {
+      "type": "header",
+      "content": "Arrow button"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "min": 30,
+      "max": 70,
+      "step": 5,
+      "unit": "px",
+      "label": "Button size",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "arrow_icon_size",
+      "min": 16,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "arrow_background",
+      "label": "Background",
+      "default": "#FFFFFF26"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_background",
+      "label": "Hover background",
+      "default": "#FFFFFF40"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Icon color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_color",
+      "label": "Hover icon color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category overview"
+    }
+  ]
+}
 {% endschema %}
