@@ -75,19 +75,29 @@
 
 
 {% comment %} New Desktop Menu  {% endcomment %}
- {% assign main_menu = linklists[block_settings.menu] %}
+{% assign main_menu = linklists[block_settings.menu] %}
 
 {% if main_menu.links.size > 0 %}
   <ul class="main_menu_desktop_new">
     {% for link in main_menu.links %}
       <li class="menu-item {% if link.active %}active{% endif %}">
-        <a href="{{ link.url }}">{{ link.title }}</a>
+        <a href="{{ link.url }}">
+          {{ link.title }}
+          {% if link.links.size > 0 %}
+            <span class="dropdown-arrow"></span>
+          {% endif %}
+        </a>
 
         {% if link.links.size > 0 %}
           <ul class="sub-menu">
             {% for sub_link in link.links %}
               <li class="submenu-item {% if sub_link.active %}active{% endif %}">
-                <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                <a href="{{ sub_link.url }}">
+                  {{ sub_link.title }}
+                  {% if sub_link.links.size > 0 %}
+                    <span class="dropdown-arrow sub-arrow"></span>
+                  {% endif %}
+                </a>
 
                 {% if sub_link.links.size > 0 %}
                   <ul class="third-level-menu">
@@ -106,6 +116,7 @@
     {% endfor %}
   </ul>
 {% endif %}
+
 {% comment %} New Desktop Menu  {% endcomment %}
 {% endcase %}
 
