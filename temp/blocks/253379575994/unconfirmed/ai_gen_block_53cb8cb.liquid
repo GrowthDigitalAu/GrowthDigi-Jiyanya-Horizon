@@ -1,6 +1,381 @@
+{% doc %}
+  @prompt
+    Please create a block for menu selcted and the menu is first lavel, 2 and third lavel 
+    
+    
+    PLease gernat the block
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-multilevel-menu-{{ ai_gen_id }} {
+    position: relative;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px 0;
+  }
+
+  .ai-multilevel-menu__container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-multilevel-menu__list-{{ ai_gen_id }} {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: {{ block.settings.item_spacing }}px;
+  }
+
+  .ai-multilevel-menu__item-{{ ai_gen_id }} {
+    position: relative;
+  }
+
+  .ai-multilevel-menu__link-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .ai-multilevel-menu__link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.text_hover_color }};
+  }
+
+  .ai-multilevel-menu__icon-{{ ai_gen_id }} {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-multilevel-menu__item-{{ ai_gen_id }}.active > .ai-multilevel-menu__link-{{ ai_gen_id }} .ai-multilevel-menu__icon-{{ ai_gen_id }} {
+    transform: rotate(180deg);
+  }
+
+  .ai-multilevel-menu__submenu-{{ ai_gen_id }} {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background-color: {{ block.settings.submenu_background_color }};
+    border-radius: {{ block.settings.submenu_border_radius }}px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+  }
+
+  .ai-multilevel-menu__item-{{ ai_gen_id }}:hover > .ai-multilevel-menu__submenu-{{ ai_gen_id }},
+  .ai-multilevel-menu__item-{{ ai_gen_id }}.active > .ai-multilevel-menu__submenu-{{ ai_gen_id }} {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ai-multilevel-menu__submenu-item-{{ ai_gen_id }} {
+    position: relative;
+  }
+
+  .ai-multilevel-menu__submenu-link-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: {{ block.settings.submenu_text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.submenu_font_size }}px;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-multilevel-menu__submenu-link-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.submenu_hover_background }};
+  }
+
+  .ai-multilevel-menu__submenu-{{ ai_gen_id }} .ai-multilevel-menu__submenu-{{ ai_gen_id }} {
+    top: 0;
+    left: 100%;
+    margin-left: 4px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-multilevel-menu__list-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ai-multilevel-menu__submenu-{{ ai_gen_id }} {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      background-color: transparent;
+      padding-left: 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .ai-multilevel-menu__item-{{ ai_gen_id }}.active > .ai-multilevel-menu__submenu-{{ ai_gen_id }} {
+      max-height: 1000px;
+    }
+
+    .ai-multilevel-menu__submenu-{{ ai_gen_id }} .ai-multilevel-menu__submenu-{{ ai_gen_id }} {
+      margin-left: 0;
+    }
+
+    .ai-multilevel-menu__link-{{ ai_gen_id }} {
+      padding: 12px 0;
+    }
+
+    .ai-multilevel-menu__submenu-link-{{ ai_gen_id }} {
+      padding: 10px 0;
+    }
+  }
+{% endstyle %}
+
+<multilevel-menu-{{ ai_gen_id }} class="ai-multilevel-menu-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-multilevel-menu__container-{{ ai_gen_id }}">
+    {% if block.settings.menu != blank %}
+      <ul class="ai-multilevel-menu__list-{{ ai_gen_id }}">
+        {% for link in block.settings.menu.links %}
+          <li class="ai-multilevel-menu__item-{{ ai_gen_id }}" data-has-submenu="{% if link.links != blank %}true{% else %}false{% endif %}">
+            {% if link.links != blank %}
+              <a class="ai-multilevel-menu__link-{{ ai_gen_id }}" href="{{ link.url }}">
+                {{ link.title }}
+                <svg class="ai-multilevel-menu__icon-{{ ai_gen_id }}" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="2,4 6,8 10,4"></polyline>
+                </svg>
+              </a>
+              <ul class="ai-multilevel-menu__submenu-{{ ai_gen_id }}">
+                {% for child_link in link.links %}
+                  <li class="ai-multilevel-menu__submenu-item-{{ ai_gen_id }}" data-has-submenu="{% if child_link.links != blank %}true{% else %}false{% endif %}">
+                    <a class="ai-multilevel-menu__submenu-link-{{ ai_gen_id }}" href="{{ child_link.url }}">
+                      {{ child_link.title }}
+                      {% if child_link.links != blank %}
+                        <svg class="ai-multilevel-menu__icon-{{ ai_gen_id }}" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="4,2 8,6 4,10"></polyline>
+                        </svg>
+                      {% endif %}
+                    </a>
+                    {% if child_link.links != blank %}
+                      <ul class="ai-multilevel-menu__submenu-{{ ai_gen_id }}">
+                        {% for grandchild_link in child_link.links %}
+                          <li class="ai-multilevel-menu__submenu-item-{{ ai_gen_id }}">
+                            <a class="ai-multilevel-menu__submenu-link-{{ ai_gen_id }}" href="{{ grandchild_link.url }}">
+                              {{ grandchild_link.title }}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <a class="ai-multilevel-menu__link-{{ ai_gen_id }}" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div style="padding: 20px; text-align: center; color: #999;">
+        Select a menu in the block settings
+      </div>
+    {% endif %}
+  </div>
+</multilevel-menu-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class MultilevelMenu{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupMobileMenu();
+      }
+
+      setupMobileMenu() {
+        if (window.innerWidth <= 749) {
+          const items = this.querySelectorAll('.ai-multilevel-menu__item-{{ ai_gen_id }}[data-has-submenu="true"]');
+          
+          items.forEach(item => {
+            const link = item.querySelector('.ai-multilevel-menu__link-{{ ai_gen_id }}');
+            
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              item.classList.toggle('active');
+            });
+          });
+
+          const submenuItems = this.querySelectorAll('.ai-multilevel-menu__submenu-item-{{ ai_gen_id }}[data-has-submenu="true"]');
+          
+          submenuItems.forEach(item => {
+            const link = item.querySelector('.ai-multilevel-menu__submenu-link-{{ ai_gen_id }}');
+            
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              item.classList.toggle('active');
+            });
+          });
+        }
+      }
+    }
+
+    customElements.define('multilevel-menu-{{ ai_gen_id }}', MultilevelMenu{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Multi-level menu",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "info": "Select a menu with up to 3 levels of navigation"
+    },
+    {
+      "type": "header",
+      "content": "Menu style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_hover_color",
+      "label": "Text hover",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Item spacing",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Submenu style"
+    },
+    {
+      "type": "color",
+      "id": "submenu_background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "submenu_text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "submenu_hover_background",
+      "label": "Hover background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "range",
+      "id": "submenu_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "submenu_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multi-level menu"
+    }
+  ]
+}
 {% endschema %}
