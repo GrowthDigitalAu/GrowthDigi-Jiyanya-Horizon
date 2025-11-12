@@ -4354,7 +4354,7 @@ text-component {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 30px; /* spacing between main items */
+  gap: 0; /* spacing between main items */
   position: relative;
 }
 
