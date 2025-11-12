@@ -4346,3 +4346,101 @@ text-component {
 
 
 
+/* Header Desktop Menu CSS */
+
+  /* ==== Main Menu (Level 1) ==== */
+.main_menu_desktop_new {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px; /* spacing between main items */
+  position: relative;
+}
+
+.main_menu_desktop_new > li {
+  position: relative;
+}
+
+.main_menu_desktop_new > li > a {
+  display: block;
+  padding: 12px 0;
+  text-decoration: none;
+  font-weight: 500;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+.main_menu_desktop_new > li:hover > a {
+  color: #cdaa02; /* change color on hover */
+}
+
+/* ==== Sub Menu (Level 2) ==== */
+.main_menu_desktop_new .sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  list-style: none;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 100;
+}
+
+.main_menu_desktop_new li:hover > .sub-menu {
+  display: block;
+}
+
+.main_menu_desktop_new .sub-menu li {
+  position: relative;
+}
+
+.main_menu_desktop_new .sub-menu a {
+  display: block;
+  padding: 2px 15px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 14px;
+}
+
+.main_menu_desktop_new .sub-menu a:hover {
+  background: #f5f5f5;
+  color: #cba702;
+}
+
+/* ==== Third-Level Menu ==== */
+.main_menu_desktop_new .third-level-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 200px;
+  list-style: none;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 200;
+}
+
+.main_menu_desktop_new .sub-menu li:hover > .third-level-menu {
+  display: block;
+}
+
+/* ==== Optional Styling ==== */
+.main_menu_desktop_new .active > a {
+  color: #d0ab02;
+}
+
+.main_menu_desktop_new li {
+  cursor: pointer;
+}
+
+.main_menu_desktop_new a {
+  font-family: inherit;
+  font-size: 15px;
+}
+
