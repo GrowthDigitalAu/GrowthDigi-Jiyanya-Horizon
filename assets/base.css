@@ -4330,3 +4330,13 @@ text-component {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+.arrow_box {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
