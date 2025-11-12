@@ -1,0 +1,33 @@
+{% if closest.collection == blank %}
+  {% assign text = '0 items' %}
+  {% assign collection_count = '<p>' | append: text | append: '</p>' %}
+  {% render 'text', fallback_text: collection_count, block: block %}
+{% else %}
+  {% assign count = closest.collection.all_products_count %}
+  {% if count > 1 %}
+    {% assign text = count | append: ' items' %}
+  {% else %}
+    {% assign text = count | append: ' item' %}
+  {% endif %}
+  {% assign collection_count = '<p>' | append: text | append: '</p>' %}
+  {% render 'text', fallback_text: collection_count, block: block %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection Product Count",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Displays the product count for the current collection."
+    }        
+  ],
+  "presets": [
+    {
+      "name": "Collection Product Count",
+      "category": "t:categories.collection"
+    }
+  ]
+}
+{% endschema %}
