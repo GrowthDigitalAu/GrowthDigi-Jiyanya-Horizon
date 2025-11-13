@@ -1,0 +1,60 @@
+<div class="product_discription_new">
+
+  {% assign clean = product.description %}
+
+  {%- comment -%} Remove MS Word/Excel text garbage {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '_x000D_', ''
+    | replace: '\r', ''
+    | replace: '\n', ''
+    | replace: '\\n', ''
+  %}
+
+  {%- comment -%} Remove ALL inline attribute junk like margin-bottom:="" 1.5em; {%- endcomment -%}
+  {% assign clean = clean
+    | replace: 'margin-bottom:', ''
+    | replace: 'margin-top:', ''
+    | replace: 'font-family:', ''
+    | replace: 'font-size:', ''
+    | replace: 'font-style:', ''
+    | replace: 'font-weight:', ''
+    | replace: 'letter-spacing:', ''
+    | replace: 'text-align:', ''
+    | replace: 'text-indent:', ''
+    | replace: 'text-transform:', ''
+    | replace: 'text-decoration:', ''
+    | replace: '=""', ''
+    | replace: '"', ''
+  %}
+
+  {%- comment -%} Remove Apple converted spaces {%- endcomment -%}
+  {% assign clean = clean
+    | replace: 'classapple-converted-space=', ''
+    | replace: '&nbsp;', ' '
+  %}
+
+  {%- comment -%} Remove weird span/strong wrappers {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '<span', '<span '
+    | replace: '</span>', ''
+  %}
+
+  {%- comment -%} Turn "•Something" into <li>Something</li> {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '•', '<li>'
+  %}
+
+  {%- comment -%} Automatically wrap bullet list in <ul> {%- endcomment -%}
+  {% if clean contains '<li>' %}
+    {% assign clean = '<ul>' | append: clean | append: '</ul>' %}
+  {% endif %}
+
+  {%- comment -%} Cleanup repeated <p> tags becoming empty {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '<p >', '<p>'
+    | replace: '<p>', '<p>'
+  %}
+
+  {{ clean | strip }}
+
+</div>
