@@ -1,60 +1,79 @@
-<div class="product_discription_new">
+{% assign clean = product.description %}
 
-  {% assign clean = product.description %}
+{%- comment -%}
+REMOVE MS WORD / GOOGLE JUNK
+{%- endcomment -%}
+{% assign clean = clean
+  | replace: '_x000D_', ''
+  | replace: '\r', ''
+  | replace: '\n', ''
+  | replace: '\\n', ''
+  | replace: 'Apple-converted-space', ''
+%}
 
-  {%- comment -%} Remove MS Word/Excel text garbage {%- endcomment -%}
-  {% assign clean = clean
-    | replace: '_x000D_', ''
-    | replace: '\r', ''
-    | replace: '\n', ''
-    | replace: '\\n', ''
-  %}
+{%- comment -%}
+REMOVE ALL INLINE STYLES (style="", margin="", 0px="", 16px="", etc)
+{%- endcomment -%}
+{% assign clean = clean
+  | replace: 'style=', ''
+  | replace: 'margin-bottom:', ''
+  | replace: 'margin-top:', ''
+  | replace: 'font-family:', ''
+  | replace: 'font-size:', ''
+  | replace: 'font-style:', ''
+  | replace: 'font-weight:', ''
+  | replace: 'letter-spacing:', ''
+  | replace: 'text-align:', ''
+  | replace: 'text-indent:', ''
+  | replace: 'text-transform:', ''
+  | replace: 'text-decoration:', ''
+  | replace: '=""', ''
+  | replace: '"', ''
+%}
 
-  {%- comment -%} Remove ALL inline attribute junk like margin-bottom:="" 1.5em; {%- endcomment -%}
-  {% assign clean = clean
-    | replace: 'margin-bottom:', ''
-    | replace: 'margin-top:', ''
-    | replace: 'font-family:', ''
-    | replace: 'font-size:', ''
-    | replace: 'font-style:', ''
-    | replace: 'font-weight:', ''
-    | replace: 'letter-spacing:', ''
-    | replace: 'text-align:', ''
-    | replace: 'text-indent:', ''
-    | replace: 'text-transform:', ''
-    | replace: 'text-decoration:', ''
-    | replace: '=""', ''
-    | replace: '"', ''
-  %}
+{%- comment -%}
+REMOVE ALL <p> TAGS INSIDE UL BECAUSE INVALID HTML
+{%- endcomment -%}
+{% assign clean = clean
+  | replace: '<ul><p', '<ul><div'
+  | replace: '</p></ul>', '</div></ul>'
+  | replace: '<p>', ''
+  | replace: '</p>', ''
+%}
 
-  {%- comment -%} Remove Apple converted spaces {%- endcomment -%}
-  {% assign clean = clean
-    | replace: 'classapple-converted-space=', ''
-    | replace: '&nbsp;', ' '
-  %}
+{%- comment -%}
+CLEAN EMPTY OR BROKEN TAGS
+{%- endcomment -%}
+{% assign clean = clean
+  | replace: '<p ></p>', ''
+  | replace: '<p></p>', ''
+  | replace: '<li><strong></strong>', '<li>'
+  | replace: '<li><strong>', '<li>'
+%}
 
-  {%- comment -%} Remove weird span/strong wrappers {%- endcomment -%}
-  {% assign clean = clean
-    | replace: '<span', '<span '
-    | replace: '</span>', ''
-  %}
+{%- comment -%}
+CONVERT BULLETS TO LI
+{%- endcomment -%}
+{% assign clean = clean
+  | replace: '•', '<li>'
+%}
 
-  {%- comment -%} Turn "•Something" into <li>Something</li> {%- endcomment -%}
-  {% assign clean = clean
-    | replace: '•', '<li>'
-  %}
+{%- comment -%}
+ENSURE PROPER <ul> WRAPPER
+{%- endcomment -%}
+{% if clean contains '<li>' %}
+  {% assign clean = '<ul>' | append: clean | append: '</ul>' %}
+{% endif %}
 
-  {%- comment -%} Automatically wrap bullet list in <ul> {%- endcomment -%}
-  {% if clean contains '<li>' %}
-    {% assign clean = '<ul>' | append: clean | append: '</ul>' %}
-  {% endif %}
+{%- comment -%}
+CLEAN DOUBLE <ul><ul> OR </ul></ul>
+{%- endcomment -%}
+{% assign clean = clean
+  | replace: '<ul><ul>', '<ul>'
+  | replace: '</ul></ul>', '</ul>'
+%}
 
-  {%- comment -%} Cleanup repeated <p> tags becoming empty {%- endcomment -%}
-  {% assign clean = clean
-    | replace: '<p >', '<p>'
-    | replace: '<p>', '<p>'
-  %}
-
-  {{ clean | strip }}
-
-</div>
+{%- comment -%}
+FINAL OUTPUT
+{%- endcomment -%}
+{{ clean | strip }}
