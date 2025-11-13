@@ -1,46 +1,55 @@
 {% comment %}
-UNIVERSAL PRODUCT DESCRIPTION CLEANER
-- Removes all broken HTML
-- Removes inline styles
-- Fixes Google/Word garbage
-- Extracts clean text only
-- Rebuilds as: Heading + Bullet list
-- 100% safe, never breaks layout
+UNIVERSAL DESCRIPTION CLEANER
+- Fix broken HTML
+- Remove inline styles
+- Detect bullets automatically
+- If no bullets → create clean paragraphs
+- Never break layout
 {% endcomment %}
 
-{%- comment -%}
-1) Remove MS Word / Google extra garbage
-{%- endcomment -%}
+{%- comment -%} 1) Clean raw description text {%- endcomment -%}
 {% assign text = product.description 
   | replace: '_x000D_', ' ' 
   | replace: '\n', ' '
   | replace: '\\n', ' '
   | replace: '\r', ' '
+  | strip_html
+  | strip
 %}
 
-{%- comment -%}
-2) Strip ALL HTML completely (VERY IMPORTANT)
-{%- endcomment -%}
-{% assign text = text | strip_html | strip %}
-
-{%- comment -%}
-3) Split description into items using bullet (•)
-{%- endcomment -%}
-{% assign parts = text | split: '•' %}
+{%- comment -%} 2) Check if description contains bullets (•) {%- endcomment -%}
+{% assign has_bullets = text contains '•' %}
 
 <div class="product_discription_new">
 
-  {%- comment -%} 4) First part becomes heading {%- endcomment -%}
-  <h3>{{ parts.first | strip }}</h3>
+  {% if has_bullets %}
+    {%- comment -%} BULLET MODE {%- endcomment -%}
+    {% assign parts = text | split: '•' %}
 
-  {%- comment -%} 5) Build clean bullet list {%- endcomment -%}
-  <ul>
-    {% for item in parts offset: 1 %}
-      {% assign cleaned = item | strip %}
-      {% if cleaned != '' %}
-        <li>{{ cleaned }}</li>
+    <h3>{{ parts.first | strip }}</h3>
+
+    <ul>
+      {% for item in parts offset:1 %}
+        {% assign cleaned = item | strip %}
+        {% if cleaned != '' %}
+          <li>{{ cleaned }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+  {% else %}
+
+    {%- comment -%} PARAGRAPH MODE (NO BULLETS) {%- endcomment -%}
+
+    {% assign sentences = text | split: '. ' %}
+
+    {% for s in sentences %}
+      {% assign p = s | strip %}
+      {% if p != '' %}
+        <p>{{ p }}.</p>
       {% endif %}
     {% endfor %}
-  </ul>
+
+  {% endif %}
 
 </div>
