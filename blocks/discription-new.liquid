@@ -1,35 +1,51 @@
 <div class="product_discription_new">
-{% assign clean_desc = product.description
-  | replace: 'Apple-converted-space', ''
-  | replace: '&nbsp;', ' '
-  | replace: '<span>', ''
-  | replace: '</span>', ''
-  | replace: '<span ', '<span' 
-  | replace: 'style="', 'nostyle="' 
-%}
-{% assign clean_desc = clean_desc
-  | replace: 'style="', ' '
-  | strip
-%}
 
-{% assign clean_desc = clean_desc
-  | replace: '•', '<li>'
-%}
+  {% assign clean_desc = product.description %}
 
-{% if clean_desc contains '<li>' %}
-  {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
-{% endif %}
+  {%- comment -%}
+    Remove Apple spacing & span tags
+  {%- endcomment -%}
+  {% assign clean_desc = clean_desc
+    | replace: 'Apple-converted-space', ''
+    | replace: '&nbsp;', ' '
+    | replace: '<span', '<remspan'
+    | replace: '</span>', ''
+  %}
 
-{{ clean_desc }}
-<div>
+  {%- comment -%}
+    Remove all inline styles
+  {%- endcomment -%}
+  {% assign clean_desc = clean_desc
+    | replace: 'style="', ''
+    | replace: '"', ''
+  %}
+
+  {%- comment -%}
+    Convert • bullet to <li>
+  {%- endcomment -%}
+  {% assign clean_desc = clean_desc
+    | replace: '•', '<li>'
+  %}
+
+  {%- comment -%}
+    Wrap inside <ul> only if <li> exists
+  {%- endcomment -%}
+  {% if clean_desc contains '<li>' %}
+    {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
+  {% endif %}
+
+  {{ clean_desc }}
+
+</div>
+
 {% schema %}
 {
-"name":"Discription New",
-"settings": [],
-"presets": [
+  "name": "Description New",
+  "settings": [],
+  "presets": [
     {
-        "name": "Discription New"
+      "name": "Description New"
     }
-]
+  ]
 }
-{%  endschema %}
+{% endschema %}
