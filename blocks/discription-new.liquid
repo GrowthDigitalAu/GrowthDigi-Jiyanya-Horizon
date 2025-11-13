@@ -1,8 +1,8 @@
-
 <div class="product_discription_new">
 
   {% assign clean = product.description %}
 
+  {%- comment -%} Remove MS Word/Excel line breaks {%- endcomment -%}
   {% assign clean = clean
     | replace: '_x000D_', ''
     | replace: '\r', ''
@@ -10,30 +10,51 @@
     | replace: '\\n', ''
   %}
 
+  {%- comment -%} Remove Google SERP auto HTML (remspan, WaaZC, mark, etc) {%- endcomment -%}
   {% assign clean = clean
-    | replace: 'Apple-converted-space', ''
-    | replace: '<span', '<remspan'
-    | replace: '</span>', ''
+    | replace: '<remspan', '<span'
+    | replace: '</remspan>', '</span>'
+    | replace: '<mark', '<span'
+    | replace: '</mark>', '</span>'
+    | replace: 'WaaZC', ''
+    | replace: 'rPeykc', ''
+    | replace: 'pjBG2e', ''
+    | replace: 'UV3uM', ''
+  %}
+
+  {%- comment -%} Remove ALL inline styles {%- endcomment -%}
+  {% assign clean = clean
     | replace: 'style="', ''
+    | replace: '="', ''
+    | replace: '"', ''
   %}
 
+  {%- comment -%} Remove empty divs caused by Google copy {%- endcomment -%}
   {% assign clean = clean
-    | replace: '<ul></ul>', ''
-    | replace: '<ul><ul>', '<ul>'
-    | replace: '</ul></ul>', '</ul>'
+    | replace: '<div></div>', ''
+    | replace: '<div >', '<div>'
   %}
 
+  {%- comment -%} Remove leftover invalid HTML attributes {%- endcomment -%}
   {% assign clean = clean
-    | replace: '•', '<li>'
+    | replace: 'margin:', ''
+    | replace: 'padding:', ''
+    | replace: 'background:', ''
+    | replace: 'color:', ''
+    | replace: 'var(--', ''
+    | replace: 'data-', ''
   %}
 
-  {% if clean contains '<li>' %}
-    {% assign clean = '<ul>' | append: clean | append: '</ul>' %}
-  {% endif %}
+  {%- comment -%} Remove double <br> and unwanted spacing {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '<br><br>', '<br>'
+    | strip
+  %}
 
-  {{ clean | strip }}
+  {{ clean }}
 
 </div>
+
 
 {% schema %}
 {
