@@ -37,6 +37,12 @@
             "column_label": "Product ID"
           }
         },
+        "description_eLDACa": {
+          "type": "description",
+          "settings": {
+            "column_label": "Description"
+          }
+        },
         "price_AbAJ4z": {
           "type": "price",
           "disabled": true,
@@ -71,6 +77,7 @@
         "title_kh7Gzw",
         "handle_qxUjtD",
         "id_TrBiq4",
+        "description_eLDACa",
         "price_AbAJ4z",
         "tags_M7jMeh",
         "options_CM8cWw",
