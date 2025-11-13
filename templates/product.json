@@ -155,9 +155,16 @@
                   },
                   "blocks": {}
                 },
+                "discription_new_Fbm6HV": {
+                  "type": "discription-new",
+                  "name": "Discription New",
+                  "settings": {},
+                  "blocks": {}
+                },
                 "product_description_Dt9jKx": {
                   "type": "product-description",
                   "name": "t:names.product_description",
+                  "disabled": true,
                   "settings": {
                     "text": "{{ closest.product.description }}",
                     "width": "fit-content",
@@ -197,6 +204,7 @@
               "block_order": [
                 "text_xrnftG",
                 "price_tVjtKg",
+                "discription_new_Fbm6HV",
                 "product_description_Dt9jKx",
                 "live_view_counter_gYiYTQ"
               ]
