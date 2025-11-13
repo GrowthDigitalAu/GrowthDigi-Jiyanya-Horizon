@@ -636,7 +636,17 @@
           "hearts",
           "journal-notebook",
           "orgone",
-          "palm-stones"
+          "palm-stones",
+          "pendants",
+          "points",
+          "pyramids",
+          "runes-stones",
+          "selenite",
+          "spheres",
+          "trees",
+          "tumbles",
+          "unique-articles",
+          "wands"
         ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
