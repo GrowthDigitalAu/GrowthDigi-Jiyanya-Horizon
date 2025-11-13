@@ -1,69 +1,46 @@
-{% assign clean = product.description %}
+{% comment %}
+UNIVERSAL PRODUCT DESCRIPTION CLEANER
+- Removes all broken HTML
+- Removes inline styles
+- Fixes Google/Word garbage
+- Extracts clean text only
+- Rebuilds as: Heading + Bullet list
+- 100% safe, never breaks layout
+{% endcomment %}
 
-{%- comment -%} 1) Remove MS Word / Google junk {%- endcomment -%}
-{% assign clean = clean
-  | replace: '_x000D_', ''
-  | replace: '\r', ''
-  | replace: '\n', ''
-  | replace: '\\n', ''
-  | replace: 'Apple-converted-space', ''
+{%- comment -%}
+1) Remove MS Word / Google extra garbage
+{%- endcomment -%}
+{% assign text = product.description 
+  | replace: '_x000D_', ' ' 
+  | replace: '\n', ' '
+  | replace: '\\n', ' '
+  | replace: '\r', ' '
 %}
 
-{%- comment -%} 2) Remove ALL inline attributes safely {%- endcomment -%}
-{% assign clean = clean
-  | replace: 'style=', ''
-  | replace: 'margin-bottom:', ''
-  | replace: 'margin-top:', ''
-  | replace: 'font-family:', ''
-  | replace: 'font-size:', ''
-  | replace: 'font-style:', ''
-  | replace: 'font-weight:', ''
-  | replace: 'letter-spacing:', ''
-  | replace: 'text-align:', ''
-  | replace: 'text-indent:', ''
-  | replace: 'text-transform:', ''
-  | replace: 'text-decoration:', ''
-  | replace: '=""', ''
-  | replace: '"', ''
-%}
+{%- comment -%}
+2) Strip ALL HTML completely (VERY IMPORTANT)
+{%- endcomment -%}
+{% assign text = text | strip_html | strip %}
 
-{%- comment -%} 3) Remove ALL <p> inside UL, fix invalid HTML {%- endcomment -%}
-{% assign clean = clean
-  | replace: '<ul><p', '<ul><div'
-  | replace: '</p></ul>', '</div></ul>'
-  | replace: '<p>', ''
-  | replace: '</p>', ''
-%}
-
-{%- comment -%} 4) Fix broken strong + li tags {%- endcomment -%}
-{% assign clean = clean
-  | replace: '<li><strong></strong>', '<li>'
-  | replace: '<li><strong>', '<li>'
-  | replace: '</strong>', ''
-%}
-
-{%- comment -%} 5) Convert "•" into <li> {%- endcomment -%}
-{% assign clean = clean
-  | replace: '•', '<li>'
-%}
-
-{%- comment -%} 6) Wrap everything in <ul> if there are list items {%- endcomment -%}
-{% if clean contains '<li>' %}
-  {% assign clean = '<ul>' | append: clean | append: '</ul>' %}
-{% endif %}
-
-{%- comment -%} 7) Remove nested UL issues {%- endcomment -%}
-{% assign clean = clean
-  | replace: '<ul><ul>', '<ul>'
-  | replace: '</ul></ul>', '</ul>'
-%}
-
-{%- comment -%} 8) Remove empty divs created earlier {%- endcomment -%}
-{% assign clean = clean
-  | replace: '<div></div>', ''
-  | replace: '<div >', '<div>'
-%}
+{%- comment -%}
+3) Split description into items using bullet (•)
+{%- endcomment -%}
+{% assign parts = text | split: '•' %}
 
 <div class="product_discription_new">
-  {{ clean | strip }}
+
+  {%- comment -%} 4) First part becomes heading {%- endcomment -%}
+  <h3>{{ parts.first | strip }}</h3>
+
+  {%- comment -%} 5) Build clean bullet list {%- endcomment -%}
+  <ul>
+    {% for item in parts offset: 1 %}
+      {% assign cleaned = item | strip %}
+      {% if cleaned != '' %}
+        <li>{{ cleaned }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
 </div>
