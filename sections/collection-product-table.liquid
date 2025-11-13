@@ -110,7 +110,7 @@
                 {% endif %}
               {% when 'description' %}
                       {% if product.description != blank %}
-                        {{ product.description | strip_html }}
+                        {{ product.description | remove: '_x000D_\n' | remove:'/n' }}
                       {% else %}
                         No Description
                       {% endif %}
