@@ -7,8 +7,8 @@
     assign text = product.description
   endif
 %}
---{{ product.description }}
-{% comment %} {% render 'text', fallback_text: text, block: block %} {% endcomment %}
+
+{% render 'text', fallback_text: text, block: block %}
 
 {% schema %}
 {
