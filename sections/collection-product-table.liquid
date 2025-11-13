@@ -126,6 +126,10 @@
   | replace: '•', '<li>'
 %}
 
+{% if clean_desc contains '<li>' %}
+  {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
+{% endif %}
+
                   {% if product.description != blank %}
                     {{ product.description | remove: '_x000D_\n' | remove:'/n' | remove:'\n' }}
                   {% else %}
