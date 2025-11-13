@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Ethically Sourced. Expertly Crafted</p>",
+            "text": "<p>Ethically Sourced.</p><p>Expertly Crafted.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -32,7 +32,7 @@
             "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-end": 70,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -177,7 +177,7 @@
         "blurred_reflection": false,
         "reflection_opacity": 75,
         "padding-block-start": 100,
-        "padding-block-end": 72
+        "padding-block-end": 100
       }
     },
     "product_list_fa6P9H": {
