@@ -1,4 +1,27 @@
---{{ product.description }}
+<div class="product_discription_new">
+{% assign clean_desc = product.description
+  | replace: 'Apple-converted-space', ''
+  | replace: '&nbsp;', ' '
+  | replace: '<span>', ''
+  | replace: '</span>', ''
+  | replace: '<span ', '<span' 
+  | replace: 'style="', 'nostyle="' 
+%}
+{% assign clean_desc = clean_desc
+  | replace: 'style="', ' '
+  | strip
+%}
+
+{% assign clean_desc = clean_desc
+  | replace: '•', '<li>'
+%}
+
+{% if clean_desc contains '<li>' %}
+  {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
+{% endif %}
+
+{{ clean_desc }}
+<div>
 {% schema %}
 {
 "name":"Discription New",
