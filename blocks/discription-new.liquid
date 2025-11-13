@@ -2,9 +2,7 @@
 
   {% assign clean_desc = product.description %}
 
-  {%- comment -%}
-    Remove Apple spacing & span tags
-  {%- endcomment -%}
+  {%- comment -%} Remove Apple spacing & span tags {%- endcomment -%}
   {% assign clean_desc = clean_desc
     | replace: 'Apple-converted-space', ''
     | replace: '&nbsp;', ' '
@@ -12,24 +10,25 @@
     | replace: '</span>', ''
   %}
 
-  {%- comment -%}
-    Remove all inline styles
-  {%- endcomment -%}
+  {%- comment -%} Remove inline styles completely {%- endcomment -%}
   {% assign clean_desc = clean_desc
     | replace: 'style="', ''
     | replace: '"', ''
   %}
 
-  {%- comment -%}
-    Convert • bullet to <li>
-  {%- endcomment -%}
+  {%- comment -%} Remove newlines and literal "\n" prints {%- endcomment -%}
+  {% assign clean_desc = clean_desc
+    | replace: '\n', ''
+    | replace: '\r', ''
+    | replace: '\\n', ''
+  %}
+
+  {%- comment -%} Convert bullets “•” to <li> {%- endcomment -%}
   {% assign clean_desc = clean_desc
     | replace: '•', '<li>'
   %}
 
-  {%- comment -%}
-    Wrap inside <ul> only if <li> exists
-  {%- endcomment -%}
+  {%- comment -%} Wrap list items in <ul> {%- endcomment -%}
   {% if clean_desc contains '<li>' %}
     {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
   {% endif %}
