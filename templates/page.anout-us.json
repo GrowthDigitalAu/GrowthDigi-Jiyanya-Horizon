@@ -266,6 +266,32 @@
     "section_VGhGwD": {
       "type": "section",
       "blocks": {
+        "text_n4wxe7": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Join our Newsletter — Get Updates, Offers and Invites</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 20,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "email_signup_CcnqW8": {
           "type": "email-signup",
           "name": "t:names.email_signup",
@@ -294,6 +320,7 @@
         }
       },
       "block_order": [
+        "text_n4wxe7",
         "email_signup_CcnqW8"
       ],
       "name": "t:names.custom_section",
