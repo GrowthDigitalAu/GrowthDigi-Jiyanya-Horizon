@@ -109,28 +109,62 @@
                   No Collections
                 {% endif %}
               {% when 'description' %}
-                {% assign clean_desc = product.description
-  | replace: 'Apple-converted-space', ''
-  | replace: '&nbsp;', ' '
-  | replace: '<span>', ''
-  | replace: '</span>', ''
-  | replace: '<span ', '<span' 
-  | replace: 'style="', 'nostyle="' 
-%}
-{% assign clean_desc = clean_desc
-  | replace: 'style="', ' '
-  | strip
-%}
+                <div class="product_discription_new">
 
-{% assign clean_desc = clean_desc
-  | replace: '•', '<li>'
-%}
+  {% assign clean = product.description %}
 
-{% if clean_desc contains '<li>' %}
-  {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
-{% endif %}
+  {%- comment -%} Remove MS Word/Excel line breaks {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '_x000D_', ''
+    | replace: '\r', ''
+    | replace: '\n', ''
+    | replace: '\\n', ''
+  %}
 
-{{ clean_desc }}
+  {%- comment -%} Remove Google SERP auto HTML (remspan, WaaZC, mark, etc) {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '<remspan', '<span'
+    | replace: '</remspan>', '</span>'
+    | replace: '<mark', '<span'
+    | replace: '</mark>', '</span>'
+    | replace: 'WaaZC', ''
+    | replace: 'rPeykc', ''
+    | replace: 'pjBG2e', ''
+    | replace: 'UV3uM', ''
+  %}
+
+  {%- comment -%} Remove ALL inline styles {%- endcomment -%}
+  {% assign clean = clean
+    | replace: 'style="', ''
+    | replace: '="', ''
+    | replace: '"', ''
+  %}
+
+  {%- comment -%} Remove empty divs caused by Google copy {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '<div></div>', ''
+    | replace: '<div >', '<div>'
+  %}
+
+  {%- comment -%} Remove leftover invalid HTML attributes {%- endcomment -%}
+  {% assign clean = clean
+    | replace: 'margin:', ''
+    | replace: 'padding:', ''
+    | replace: 'background:', ''
+    | replace: 'color:', ''
+    | replace: 'var(--', ''
+    | replace: 'data-', ''
+  %}
+
+  {%- comment -%} Remove double <br> and unwanted spacing {%- endcomment -%}
+  {% assign clean = clean
+    | replace: '<br><br>', '<br>'
+    | strip
+  %}
+
+  {{ clean }}
+
+</div>
 {% comment %} 
                   {% if product.description != blank %}
                     {{ product.description | remove: '_x000D_\n' | remove:'/n' | remove:'\n' }}
