@@ -109,6 +109,19 @@
                   No Collections
                 {% endif %}
               {% when 'description' %}
+                {% assign clean_desc = product.description
+  | replace: 'Apple-converted-space', ''
+  | replace: '&nbsp;', ' '
+  | replace: '<span>', ''
+  | replace: '</span>', ''
+  | replace: '<span ', '<span' 
+  | replace: 'style="', 'nostyle="' 
+%}
+{% assign clean_desc = clean_desc
+  | replace: 'style="', ' '
+  | strip
+%}
+
                   {% if product.description != blank %}
                     {{ product.description | remove: '_x000D_\n' | remove:'/n' | remove:'\n' }}
                   {% else %}
