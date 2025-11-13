@@ -109,7 +109,7 @@
                   No Collections
                 {% endif %}
               {% when 'description' %}
-              {% render 'discription-new' %}
+              {% render 'discription-new', block: block %}
                 {% comment %} 
                   {% if product.description != blank %}
                     {{ product.description | remove: '_x000D_\n' | remove:'/n' | remove:'\n' }}
