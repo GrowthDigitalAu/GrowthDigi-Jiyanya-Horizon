@@ -87,7 +87,7 @@
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes }}>
-    {{ block.settings.text | remove: '_x000D_\n' | remove:'/n' | remove:'<span style="font-family"><span class="Apple-converted-space">&nbsp;</span></span>' }}
+    {{ block.settings.text | remove: '_x000D_\n' | remove:'/n' | remove:'&nbsp;' }}
   </{{ element }}>
 {% endif %}
 
