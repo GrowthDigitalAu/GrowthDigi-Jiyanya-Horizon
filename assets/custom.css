@@ -27,3 +27,7 @@
   .shopify-policy__container {
     max-width:1400px !important;
   }
+
+  .product_discription_new h3 {
+    font-size:20px;
+  }
