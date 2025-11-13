@@ -87,7 +87,7 @@
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes }}>
-    {{ block.settings.text | remove: '_x000D_\n' }}
+    {{ block.settings.text | remove: '_x000D_\n' | strip_html }}
   </{{ element }}>
 {% endif %}
 
