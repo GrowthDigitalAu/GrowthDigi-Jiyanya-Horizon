@@ -122,6 +122,10 @@
   | strip
 %}
 
+{% assign clean_desc = clean_desc
+  | replace: '•', '<li>'
+%}
+
                   {% if product.description != blank %}
                     {{ product.description | remove: '_x000D_\n' | remove:'/n' | remove:'\n' }}
                   {% else %}
