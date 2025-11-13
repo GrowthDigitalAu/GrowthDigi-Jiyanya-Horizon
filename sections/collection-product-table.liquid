@@ -130,11 +130,13 @@
   {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
 {% endif %}
 
+{{ clean_desc }}
+{% comment %} 
                   {% if product.description != blank %}
                     {{ product.description | remove: '_x000D_\n' | remove:'/n' | remove:'\n' }}
                   {% else %}
                     No Description
-                  {% endif %}
+                  {% endif %} {% endcomment %}
 
               {% when 'image_url' %}
                 {% if product.images.size > 0 %}
