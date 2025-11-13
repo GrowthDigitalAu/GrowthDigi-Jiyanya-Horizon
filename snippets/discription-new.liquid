@@ -1,8 +1,6 @@
 {% assign clean = product.description %}
 
-{%- comment -%}
-REMOVE MS WORD / GOOGLE JUNK
-{%- endcomment -%}
+{%- comment -%} 1) Remove MS Word / Google junk {%- endcomment -%}
 {% assign clean = clean
   | replace: '_x000D_', ''
   | replace: '\r', ''
@@ -11,9 +9,7 @@ REMOVE MS WORD / GOOGLE JUNK
   | replace: 'Apple-converted-space', ''
 %}
 
-{%- comment -%}
-REMOVE ALL INLINE STYLES (style="", margin="", 0px="", 16px="", etc)
-{%- endcomment -%}
+{%- comment -%} 2) Remove ALL inline attributes safely {%- endcomment -%}
 {% assign clean = clean
   | replace: 'style=', ''
   | replace: 'margin-bottom:', ''
@@ -31,9 +27,7 @@ REMOVE ALL INLINE STYLES (style="", margin="", 0px="", 16px="", etc)
   | replace: '"', ''
 %}
 
-{%- comment -%}
-REMOVE ALL <p> TAGS INSIDE UL BECAUSE INVALID HTML
-{%- endcomment -%}
+{%- comment -%} 3) Remove ALL <p> inside UL, fix invalid HTML {%- endcomment -%}
 {% assign clean = clean
   | replace: '<ul><p', '<ul><div'
   | replace: '</p></ul>', '</div></ul>'
@@ -41,41 +35,35 @@ REMOVE ALL <p> TAGS INSIDE UL BECAUSE INVALID HTML
   | replace: '</p>', ''
 %}
 
-{%- comment -%}
-CLEAN EMPTY OR BROKEN TAGS
-{%- endcomment -%}
+{%- comment -%} 4) Fix broken strong + li tags {%- endcomment -%}
 {% assign clean = clean
-  | replace: '<p ></p>', ''
-  | replace: '<p></p>', ''
   | replace: '<li><strong></strong>', '<li>'
   | replace: '<li><strong>', '<li>'
+  | replace: '</strong>', ''
 %}
 
-{%- comment -%}
-CONVERT BULLETS TO LI
-{%- endcomment -%}
+{%- comment -%} 5) Convert "•" into <li> {%- endcomment -%}
 {% assign clean = clean
   | replace: '•', '<li>'
 %}
 
-{%- comment -%}
-ENSURE PROPER <ul> WRAPPER
-{%- endcomment -%}
+{%- comment -%} 6) Wrap everything in <ul> if there are list items {%- endcomment -%}
 {% if clean contains '<li>' %}
   {% assign clean = '<ul>' | append: clean | append: '</ul>' %}
 {% endif %}
 
-{%- comment -%}
-CLEAN DOUBLE <ul><ul> OR </ul></ul>
-{%- endcomment -%}
+{%- comment -%} 7) Remove nested UL issues {%- endcomment -%}
 {% assign clean = clean
   | replace: '<ul><ul>', '<ul>'
   | replace: '</ul></ul>', '</ul>'
 %}
 
-{%- comment -%}
-FINAL OUTPUT
-{%- endcomment -%}
- <div class="product_discription_new">
-   {{ clean | strip }}
+{%- comment -%} 8) Remove empty divs created earlier {%- endcomment -%}
+{% assign clean = clean
+  | replace: '<div></div>', ''
+  | replace: '<div >', '<div>'
+%}
+
+<div class="product_discription_new">
+  {{ clean | strip }}
 </div>
