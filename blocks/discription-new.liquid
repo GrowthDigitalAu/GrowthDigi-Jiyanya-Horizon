@@ -1,39 +1,37 @@
+
 <div class="product_discription_new">
 
-  {% assign clean_desc = product.description %}
+  {% assign clean = product.description %}
 
-  {%- comment -%} Remove Apple spacing & span tags {%- endcomment -%}
-  {% assign clean_desc = clean_desc
-    | replace: 'Apple-converted-space', ''
-    | replace: '&nbsp;', ' '
-    | replace: '<span', '<remspan'
-    | replace: '</span>', ''
-  %}
-
-  {%- comment -%} Remove inline styles completely {%- endcomment -%}
-  {% assign clean_desc = clean_desc
-    | replace: 'style="', ''
-    | replace: '"', ''
-  %}
-
-  {%- comment -%} Remove newlines and literal "\n" prints {%- endcomment -%}
-  {% assign clean_desc = clean_desc
-    | replace: '\n', ''
+  {% assign clean = clean
+    | replace: '_x000D_', ''
     | replace: '\r', ''
+    | replace: '\n', ''
     | replace: '\\n', ''
   %}
 
-  {%- comment -%} Convert bullets “•” to <li> {%- endcomment -%}
-  {% assign clean_desc = clean_desc
+  {% assign clean = clean
+    | replace: 'Apple-converted-space', ''
+    | replace: '<span', '<remspan'
+    | replace: '</span>', ''
+    | replace: 'style="', ''
+  %}
+
+  {% assign clean = clean
+    | replace: '<ul></ul>', ''
+    | replace: '<ul><ul>', '<ul>'
+    | replace: '</ul></ul>', '</ul>'
+  %}
+
+  {% assign clean = clean
     | replace: '•', '<li>'
   %}
 
-  {%- comment -%} Wrap list items in <ul> {%- endcomment -%}
-  {% if clean_desc contains '<li>' %}
-    {% assign clean_desc = '<ul>' | append: clean_desc | append: '</ul>' %}
+  {% if clean contains '<li>' %}
+    {% assign clean = '<ul>' | append: clean | append: '</ul>' %}
   {% endif %}
 
-  {{ clean_desc }}
+  {{ clean | strip }}
 
 </div>
 
