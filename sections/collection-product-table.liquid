@@ -109,11 +109,11 @@
                   No Collections
                 {% endif %}
               {% when 'description' %}
-                      {% if product.description != blank %}
-                        {{ product.description | remove: '_x000D_\n' | remove:'/n' }}
-                      {% else %}
-                        No Description
-                      {% endif %}
+                  {% if product.description != blank %}
+                    {{ product.description | remove: '_x000D_\n' | remove:'/n' }}
+                  {% else %}
+                    No Description
+                  {% endif %}
 
               {% when 'image_url' %}
                 {% if product.images.size > 0 %}
