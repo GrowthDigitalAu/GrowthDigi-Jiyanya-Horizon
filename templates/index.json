@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Ethically sourced. Expertly Crafted</p>",
+            "text": "<p>Ethically Sourced. Expertly Crafted</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
