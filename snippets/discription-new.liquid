@@ -2,12 +2,14 @@
 UNIVERSAL DESCRIPTION CLEANER
 - Fix broken HTML
 - Remove inline styles
-- Detect bullets automatically
-- If no bullets → create clean paragraphs
+- Detect bullets
+- If no bullets → show paragraphs
 - Never break layout
 {% endcomment %}
 
-{%- comment -%} 1) Clean raw description text {%- endcomment -%}
+{%- comment -%}
+1) Clean raw description text
+{%- endcomment -%}
 {% assign text = product.description 
   | replace: '_x000D_', ' ' 
   | replace: '\n', ' '
@@ -17,13 +19,15 @@ UNIVERSAL DESCRIPTION CLEANER
   | strip
 %}
 
-{%- comment -%} 2) Check if description contains bullets (•) {%- endcomment -%}
-{% assign has_bullets = text contains '•' %}
+{%- comment -%}
+2) Bullet detection (MUST be in IF tag, not {{ }})
+{%- endcomment -%}
 
 <div class="product_discription_new">
 
-  {% if has_bullets %}
+  {% if text contains '•' %}
     {%- comment -%} BULLET MODE {%- endcomment -%}
+
     {% assign parts = text | split: '•' %}
 
     <h3>{{ parts.first | strip }}</h3>
@@ -38,7 +42,6 @@ UNIVERSAL DESCRIPTION CLEANER
     </ul>
 
   {% else %}
-
     {%- comment -%} PARAGRAPH MODE (NO BULLETS) {%- endcomment -%}
 
     {% assign sentences = text | split: '. ' %}
