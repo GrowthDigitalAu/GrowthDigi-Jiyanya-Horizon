@@ -180,9 +180,10 @@
 
     <div class="image-block__image">
       {% if content_type == 'articles' %}
-        {{ placeholder_name | placeholder_svg_tag: 'blog-placeholder-svg' }}
+        {% comment %} {{ placeholder_name | placeholder_svg_tag: 'blog-placeholder-svg' }} {% endcomment %}
+
       {% else %}
-        {{ placeholder_name | placeholder_svg_tag }}
+        {% comment %} {{ placeholder_name | placeholder_svg_tag }} {% endcomment %}
       {% endif %}
     </div>
   </div>
