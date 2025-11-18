@@ -184,6 +184,11 @@
 
       {% else %}
         {% comment %} {{ placeholder_name | placeholder_svg_tag }} {% endcomment %}
+         <img 
+            src="{{ 'comming_soon.jpg' | file_url }}" 
+            alt="Placeholder image" 
+            loading="lazy"
+          />
       {% endif %}
     </div>
   </div>
