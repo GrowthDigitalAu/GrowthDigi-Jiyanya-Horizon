@@ -100,8 +100,8 @@
             {% if link.links.size > 0 %}
               <ul class="sub-menu">
                 {% for sub_link in link.links %}
-                  <li class="secound_level submenu-item {% if sub_link.active %}active{% endif %}">
-                    <a href="{{ sub_link.url }}">
+                  <li class=" submenu-item {% if sub_link.active %}active{% endif %}">
+                    <a class="secound_level" href="{{ sub_link.url }}">
                       {{ sub_link.title }}
                       {% if sub_link.links.size > 0 %}
                         <span class="dropdown-arrow sub-arrow">
