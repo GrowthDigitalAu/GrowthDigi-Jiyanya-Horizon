@@ -83,6 +83,7 @@
           <li class="menu-item {% if link.active %}active{% endif %}">
             <a
               {% if link.links.size > 0 %}
+                href="{{ link.url }}"
               {% else %}
                 href="{{ link.url }}"
               {% endif %}
