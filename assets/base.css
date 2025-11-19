@@ -4490,6 +4490,10 @@ text-component {
 .checkbox__label-count {
   margin-left:4px;
 }
+.secound_level {
+  padding-top:5px;
+  padding-bottom:5px;
+}
 @media screen and (max-width: 1025px) {
     .header__columns header-actions {
         grid-area: rightB;
