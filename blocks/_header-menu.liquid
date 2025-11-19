@@ -81,7 +81,12 @@
       <ul class="main_menu_desktop_new">
         {% for link in main_menu.links %}
           <li class="menu-item {% if link.active %}active{% endif %}">
-            <a href="{{ link.url }}">
+            <a
+              {% if link.links.size > 0 %}
+              {% else %}
+                href="{{ link.url }}"
+              {% endif %}
+            >
               {{ link.title }}
               {% if link.links.size > 0 %}
                 <span class="dropdown-arrow">
