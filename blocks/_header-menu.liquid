@@ -81,6 +81,20 @@
       <ul class="main_menu_desktop_new">
         {% for link in main_menu.links %}
           <li class="menu-item {% if link.active %}active{% endif %}">
+            {% if link.links.size > 0 %}
+              <a href="{{ link.url }}">
+                {{ link.title }}
+                {% if link.links.size > 0 %}
+                  <span class="dropdown-arrow">
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20.202 -1.12259e-06L22 1.7847L12.2009 11.5055C12.0439 11.6622 11.8572 11.7866 11.6515 11.8715C11.4459 11.9563 11.2253 12 11.0025 12C10.7798 12 10.5592 11.9563 10.3536 11.8715C10.1479 11.7866 9.96118 11.6622 9.80416 11.5055L-4.46525e-07 1.78471L1.798 0.00168166L11 9.12538L20.202 -1.12259e-06Z" fill="black"/>
+                    </svg>
+                  </span>
+                {% endif %}
+              </a>
+            {% else %}
+11
+            {% endif %}
             <a href="{{ link.url }}">
               {{ link.title }}
               {% if link.links.size > 0 %}
