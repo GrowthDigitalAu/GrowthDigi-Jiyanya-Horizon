@@ -126,7 +126,7 @@
                               {% assign crystal = third_link.title | url_encode %}
 
                               <a
-                                href="https://jiyanyacrystals.com/collections/all?sort_by=title-ascending&filter.v.option.crystal+type={{ crystal }}"
+                                href="{{ request.origin }}/collections/all?sort_by=title-ascending&filter.v.option.crystal+type={{ crystal }}"
                                 menu-label="{{ third_link.title | handleize }}"
                               >
                                 {{ third_link.title }}
