@@ -81,8 +81,7 @@
       <ul class="main_menu_desktop_new">
         {% for link in main_menu.links %}
           <li class="menu-item {% if link.active %}active{% endif %}">
-            {% if link.links.size > 0 %}
-              <a href="{{ link.url }}">
+            <a href="{{ link.url }}">
               {{ link.title }}
               {% if link.links.size > 0 %}
                 <span class="dropdown-arrow">
@@ -92,12 +91,6 @@
                 </span>
               {% endif %}
             </a>
-            {% else %}
-              <div class="">
-                {{ link.title }}
-              </div>
-            {% endif %}
-            
 
             {% if link.links.size > 0 %}
               <ul class="sub-menu">
