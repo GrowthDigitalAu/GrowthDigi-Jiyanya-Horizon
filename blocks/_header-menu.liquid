@@ -123,6 +123,9 @@
                         {% for third_link in sub_link.links %}
                           <li class="thirdmenu-item {% if third_link.active %}active{% endif %}">
                             {% if sub_link.title == 'Shop by Crystal' %}
+                              <a href="{{ third_link.url }}" menu-label="{{  third_link.title | handleize }}">
+                                {{- third_link.title -}}
+                              </a>
                             {% else %}
                               <a href="{{ third_link.url }}" menu-label="{{  third_link.title | handleize }}">
                                 {{- third_link.title -}}
