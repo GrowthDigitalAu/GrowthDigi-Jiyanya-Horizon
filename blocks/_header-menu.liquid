@@ -124,7 +124,6 @@
                           <li class="thirdmenu-item {% if third_link.active %}active{% endif %}">
                             {% if sub_link.title == 'Shop by Crystal' %}
                               {% assign crystal = third_link.title | url_encode %}
-
                               <a
                                 href="{{ request.origin }}/collections/all?sort_by=title-ascending&filter.v.option.crystal+type={{ crystal }}"
                                 menu-label="{{ third_link.title | handleize }}"
