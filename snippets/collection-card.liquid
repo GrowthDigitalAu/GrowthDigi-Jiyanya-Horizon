@@ -53,8 +53,7 @@
   <a
     class="collection-card__link 11"
     {% unless onboarding %}
-      target="_blank"
-      href="https://admin.shopify.com/store/jiya001cry/collections/{{- collection.id -}}"      
+      href="{{ collection.url }}"      
     {% endunless %}
   >
     <span class="visually-hidden">{{ collection.title }}</span>
