@@ -12,7 +12,7 @@
 {%- capture variables -%}
   {%- if preset != 'rte' and settings.color != "" -%}
     {% if settings.background == true %}
-    --color: {{ settings.text_color.rgb }};
+    --color: {{ block_settings.text_color | default: 'rgb(255 255 255 / 1.0)' }}
     {% else %}
     --color: {{ settings.color }};
     {% endif %}
