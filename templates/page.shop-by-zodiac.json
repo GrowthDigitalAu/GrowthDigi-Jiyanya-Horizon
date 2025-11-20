@@ -204,9 +204,18 @@
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
-          "shop-by-zodiac",
-          "shop-by-chakra",
-          "shop-by-element"
+          "aries",
+          "cancer-1",
+          "virgo-copy",
+          "sagittarius-copy",
+          "taurus",
+          "leo",
+          "leo-copy-1",
+          "capricorn-copy",
+          "gemini-1",
+          "leo-copy",
+          "scorpio-copy",
+          "aquarius-copy"
         ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
