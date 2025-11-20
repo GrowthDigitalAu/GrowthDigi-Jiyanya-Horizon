@@ -525,6 +525,7 @@
       "block_order": [
         "group_d9Vb9V"
       ],
+      "disabled": true,
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
