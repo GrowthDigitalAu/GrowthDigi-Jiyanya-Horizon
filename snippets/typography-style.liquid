@@ -13,6 +13,7 @@
   {%- if preset != 'rte' and settings.color != "" -%}
     {% if settings.background == true %}
     --color: {{ block_settings.text_color }};
+    --custom-color:{{ block_settings.text_color }};
     {% else %}
     --color: {{ settings.color }};
     {% endif %}
