@@ -349,6 +349,14 @@
       "default":false
     },
     {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Custom Text Color",
+      "alpha": true,
+      "default": "#00000026",
+      "visible_if": "{{ block.settings.use_custom_text_color == true }}"
+    },
+    {
       "type": "range",
       "id": "corner_radius",
       "label": "t:settings.corner_radius",
