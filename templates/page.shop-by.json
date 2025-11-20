@@ -91,7 +91,7 @@
             "overlay_color": "#00000026",
             "overlay_style": "solid",
             "gradient_direction": "to top",
-            "link": "",
+            "link": "shopify://pages/shop-by-zodiac",
             "open_in_new_tab": false,
             "placeholder": "",
             "padding-block-start": 10,
@@ -104,7 +104,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "link": "",
+                "link": "shopify://pages/shop-by-zodiac",
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,
@@ -115,6 +115,32 @@
                 "border_width": 1,
                 "border_opacity": 100,
                 "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Jnzgmg": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>Shop By Zodiac</p>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": true,
+                "background_color": "#00000026",
+                "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -179,6 +205,7 @@
           },
           "block_order": [
             "image_YNig7y",
+            "text_Jnzgmg",
             "text_jgjqjh",
             "text_Wczkfp"
           ]
