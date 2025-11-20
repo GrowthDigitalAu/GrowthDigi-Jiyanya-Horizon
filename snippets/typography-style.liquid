@@ -12,7 +12,7 @@
 {%- capture variables -%}
   {%- if preset != 'rte' and settings.color != "" -%}
     {% if settings.background == true %}
-    --color: var({{ settings.text_color.red, settings.text_color.green, settings.text_color.blue }});
+    --color: {{ settings.text_color.rgb }};
     {% else %}
     --color: {{ settings.color }};
     {% endif %}
