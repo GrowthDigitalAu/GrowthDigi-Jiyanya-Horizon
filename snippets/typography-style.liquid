@@ -17,8 +17,8 @@
       {% if settings.use_custom_text_color %}
         --color: {{ settings.custom_text_color }};
       {% else %}
+        --color: {{ settings.color }};
       {% endif %}
-    --color: {{ settings.color }};
     {% endif %}
   {%- endif -%}
   {%- if preset == 'custom' -%}
