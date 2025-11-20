@@ -62,6 +62,7 @@
       --text-align: {{ block_settings.alignment }};
     {% endif %}
     {% if block_settings.background %}
+      --color:{{ block_settings.text_color }};
       --text-background-color: {{ block_settings.background_color | default: 'rgb(255 255 255 / 1.0)' }};
       --text-corner-radius: {{ block_settings.corner_radius }}px;
       --text-padding: max(var(--padding-2xs), calc((var(--text-corner-radius) + var(--padding-xs)) * (1 - cos(45deg))));
