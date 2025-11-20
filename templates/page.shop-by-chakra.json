@@ -204,7 +204,15 @@
       ],
       "name": "t:names.collections_grid",
       "settings": {
-        "collection_list": [],
+        "collection_list": [
+          "spirit-element-copy",
+          "root-chakra-copy",
+          "sacral-chakra-copy",
+          "solar-plexus-chakra-copy",
+          "heart-chakra-copy",
+          "throat-chakra-copy",
+          "third-eye-chakra-copy"
+        ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "columns": 4,
