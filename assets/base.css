@@ -4429,6 +4429,10 @@ text-component {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
   z-index: 200;
+  min-height: 169px;
+  overflow: auto;
+  max-height: 500px;
+  overflow: auto;
 }
 
 .main_menu_desktop_new .sub-menu li:hover > .third-level-menu {
