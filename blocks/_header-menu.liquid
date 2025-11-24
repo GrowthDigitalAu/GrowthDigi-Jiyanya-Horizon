@@ -126,7 +126,7 @@
                             {% if sub_link.title == 'Shop by Crystal' %}
                               {% assign crystal = third_link.title | url_encode %}
                               <a
-                                href="{{ request.origin }}/collections/all?sort_by=title-ascending&filter.v.option.crystal+type={{ crystal }}"
+                                href="{{ third_link.url }}"
                                 menu-label="{{ third_link.title | handleize }}"
                               >
                                 {{ third_link.title }}
