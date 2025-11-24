@@ -4429,7 +4429,7 @@ text-component {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
   z-index: 200;
-  min-height: 169px;
+  min-height: 40px;
   overflow: auto;
   max-height: 500px;
   overflow: auto;
