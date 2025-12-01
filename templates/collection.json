@@ -39,6 +39,7 @@
         },
         "description_eLDACa": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "column_label": "Description"
           }
@@ -52,7 +53,6 @@
         },
         "tags_M7jMeh": {
           "type": "tags",
-          "disabled": true,
           "settings": {
             "column_label": "Tags"
           }
@@ -83,7 +83,6 @@
         "options_CM8cWw",
         "collections_yGXUCC"
       ],
-      "disabled": true,
       "name": "Collection Product Table",
       "settings": {
         "collection": ""
@@ -110,6 +109,7 @@
             "color": "",
             "background": false,
             "background_color": "#00000026",
+            "text_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -136,6 +136,7 @@
             "color": "",
             "background": false,
             "background_color": "#00000026",
+            "text_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -366,6 +367,7 @@
             "color": "var(--color-foreground)",
             "background": false,
             "background_color": "#00000026",
+            "text_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -391,6 +393,7 @@
             "color": "var(--color-foreground)",
             "background": false,
             "background_color": "#00000026",
+            "text_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
