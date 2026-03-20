@@ -390,6 +390,16 @@
         this.container.classList.remove('active');
         document.body.style.overflow = '';
         document.body.classList.remove('active_modal');
+
+        // ✅ Remove ?contact_posted=true#contact_form from URL
+        const url = new URL(window.location.href);
+
+        if (url.searchParams.get('contact_posted') === 'true') {
+          url.searchParams.delete('contact_posted');
+
+          // remove hash also
+          window.history.replaceState({}, document.title, url.pathname + url.search);
+        }
       }
     }
 
