@@ -225,7 +225,7 @@
                 "desktop_width_percent": 100,
                 "modal_title": "Ask about this product",
                 "title_size": 24,
-                "modal_description": "<p>This product is currently sold out. Please fill out the form below and we'll get back to you as soon as possible.</p>",
+                "modal_description": "",
                 "modal_width": 600,
                 "modal_border_radius": 14,
                 "modal_background": "#ffffff",
