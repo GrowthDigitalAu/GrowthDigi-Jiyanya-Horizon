@@ -365,12 +365,14 @@
         this.overlay.classList.add('active');
         this.container.classList.add('active');
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('active_modal');
       }
 
       closeModal() {
         this.overlay.classList.remove('active');
         this.container.classList.remove('active');
         document.body.style.overflow = '';
+        document.body.classList.remove('active_modal');
       }
     }
 
