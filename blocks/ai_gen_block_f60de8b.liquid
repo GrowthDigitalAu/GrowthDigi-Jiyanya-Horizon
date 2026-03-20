@@ -344,12 +344,26 @@
       }
 
       connectedCallback() {
+        if (this.initialized) return;
+        this.initialized = true;
+
         this.trigger = this.querySelector('.ai-soldout-modal-trigger-{{ ai_gen_id }}');
         this.overlay = this.querySelector('.ai-soldout-modal-overlay-{{ ai_gen_id }}');
         this.container = this.querySelector('.ai-soldout-modal-container-{{ ai_gen_id }}');
         this.closeButton = this.querySelector('.ai-soldout-modal-close-{{ ai_gen_id }}');
 
         this.setupEventListeners();
+
+        // ✅ NEW: Auto open modal after form submit
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('contact_posted') === 'true') {
+          this.openModal();
+
+          // Optional: scroll to modal smoothly
+          setTimeout(() => {
+            this.container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 200);
+        }
       }
 
       setupEventListeners() {
