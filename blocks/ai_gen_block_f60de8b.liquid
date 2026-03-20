@@ -216,7 +216,8 @@
     }
   }
 {% endstyle %}
-
+{% if product.available %}
+ {% else %}
 <soldout-question-modal-{{ ai_gen_id }} class="ai-soldout-modal-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   <button class="ai-soldout-modal-trigger-{{ ai_gen_id }}" type="button">
     {{ block.settings.button_label }}
@@ -335,6 +336,7 @@
     {%- endform -%}
   </div>
 </soldout-question-modal-{{ ai_gen_id }}>
+{% endif %}
 
 <script>
   (function() {
