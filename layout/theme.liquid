@@ -75,5 +75,38 @@
     --menu-columns-tablet: 4;
 }
     </style>
+
+
+    <style>
+.holiday-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: #fff3cd;
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-size: 14px;
+  z-index: 9999;
+}
+.holiday-popup button {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+</style>
+
+<div class="holiday-popup" id="holidayPopup">
+  <button onclick="document.getElementById('holidayPopup').style.display='none'">×</button>
+  <strong>Holiday Notice:</strong><br>
+  Please note that our team will be away on holiday from April 8th to April 19th, 2026.<br><br>
+  You can still place orders during this time, but shipping will pause. Orders will be dispatched on April 20th.<br>
+  Thank you for your patience!
+</div>
+
   </body>
 </html>
