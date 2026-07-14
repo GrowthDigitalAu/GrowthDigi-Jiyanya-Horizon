@@ -296,7 +296,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Join our private Facebook group for exclusive wholesale discounts, early product access, and special offers.</p>",
+                    "text": "<p>Please contact us to setup your wholesale account or Join our private Facebook group for exclusive wholesale discounts, early product access, and special offers.</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
