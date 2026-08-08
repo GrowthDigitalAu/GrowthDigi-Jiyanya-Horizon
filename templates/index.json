@@ -848,7 +848,6 @@
             "collection-card-image": {
               "type": "_collection-card-image",
               "name": "t:names.collection_card_image",
-              "disabled": true,
               "static": true,
               "settings": {
                 "image_ratio": "portrait",
