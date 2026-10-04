@@ -11,37 +11,6 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "header_announcements_9jGBFp": {
-      "type": "header-announcements",
-      "blocks": {
-        "announcement_BxgCk9": {
-          "type": "_announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "announcement_BxgCk9"
-      ],
-      "disabled": true,
-      "name": "t:names.announcement_bar",
-      "settings": {
-        "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
-      }
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -111,6 +80,52 @@
         "collection_color_scheme": "default"
       }
     },
+    "header_announcements_9jGBFp": {
+      "type": "header-announcements",
+      "blocks": {
+        "announcement_BxgCk9": {
+          "type": "_announcement",
+          "settings": {
+            "text": "<strong>Holiday Notice: October 5th to October 13th, 2026.</strong> We are taking part in the Mind Body Spirit Festival during this dates, so please note that there will be no one at the shop to dispatch orders during this time. You can still easily place your normal orders through the website while we are away, and we will lovingly pack and promptly dispatch all accumulated orders upon our return on October 15th, 2026. Please feel free to contact us with any inquiries, and thank you so much for your wonderful support and patience!&nbsp;",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_aPdWwN": {
+          "type": "_announcement",
+          "disabled": true,
+          "settings": {
+            "text": "From <strong>October 5th to October 13th, 2026</strong>, our team will be away taking part in the Mind Body Spirit Festival in Sydney! Because of this, there will be no one at the shop to dispatch orders during these dates.<strong>Can I still place an order?</strong> Yes, absolutely! Our online store remains open 24/7 so you can browse and place your orders as normal.<strong>When will my order ship?</strong> All orders placed during our break will be lovingly packed and <strong>promptly dispatched on Wednesday, October 15th, 2026</strong>.If you have any questions or need assistance while we are away, please don't hesitate to reach out to us via our contact page.Thank you so much for your continued support, patience, and understanding!&nbsp;",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "announcement_BxgCk9",
+        "announcement_aPdWwN"
+      ],
+      "disabled": true,
+      "name": "t:names.announcement_bar",
+      "settings": {
+        "speed": 5,
+        "section_width": "page-width",
+        "color_scheme": "scheme-3",
+        "divider_width": 1,
+        "padding-block-start": 15,
+        "padding-block-end": 15
+      }
+    },
     "blocks_fdjQEC": {
       "type": "_blocks",
       "blocks": {
@@ -170,8 +185,8 @@
     }
   },
   "order": [
-    "header_announcements_9jGBFp",
     "header_section",
+    "header_announcements_9jGBFp",
     "blocks_fdjQEC"
   ]
 }
