@@ -182,6 +182,102 @@
         "padding-block-end": 100
       }
     },
+    "section_NfUXPC": {
+      "type": "section",
+      "blocks": {
+        "text_bAEnJC": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h4><strong>Important Update To Our Lovely Customers:</strong></h4>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "text_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_tCVPph": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Please note that our team will be at <a href=\"https://mbsfestival.com.au/sydney/\" target=\"_blank\" title=\"MBS Festival Sydney\">Mind Body Spirit Festival, Sydney</a> from October 8th to Octobrer 11th, 2026.</p><p>Shipping will be paused from October 5th to Octobrer 15th, 2026. You can still place order during this time, but please be aware that shipping will pause while we are away. All orders placedduring our break will be dispatched promptly upon our return on <strong>Thursday, October 15th.</strong></p>",
+            "width": "fit-content",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "text_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_bAEnJC",
+        "text_tCVPph"
+      ],
+      "custom_css": [
+        "/* Stretches the section full-width and removes default theme padding */.section-rich-text {max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
+        " /* Shrinks the top and bottom height to fit tightly around the text */.rich-text {padding-top: 10px !important; padding-bottom: 10px !important; margin: 0 !important;}",
+        " /* Centers the text content nicely */.rich-text__wrapper {max-width: 100% !important; text-align: center !important; padding: 0 20px !important;}"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-3",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 25,
+        "padding-block-end": 25
+      }
+    },
     "section_3HGCRK": {
       "type": "section",
       "blocks": {
@@ -1122,102 +1218,6 @@
         "reflection_opacity": 75,
         "padding-block-start": 40,
         "padding-block-end": 40
-      }
-    },
-    "section_NfUXPC": {
-      "type": "section",
-      "blocks": {
-        "text_bAEnJC": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h4><strong>Important Update To Our Lovely Customers:</strong></h4>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "text_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_tCVPph": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>Please note that our team will be at <a href=\"https://mbsfestival.com.au/sydney/\" target=\"_blank\" title=\"MBS Festival Sydney\">Mind Body Spirit Festival, Sydney</a> from October 5th to Octobrer 15th, 2026.</p><p>You can still place order during this time, but please be aware that shipping will pause while we are away. All orders placedduring our break will be dispatched promptly upon our return on <strong>Thursday, October 15th.</strong></p>",
-            "width": "fit-content",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "text_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_bAEnJC",
-        "text_tCVPph"
-      ],
-      "custom_css": [
-        "/* Stretches the section full-width and removes default theme padding */.section-rich-text {max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
-        " /* Shrinks the top and bottom height to fit tightly around the text */.rich-text {padding-top: 10px !important; padding-bottom: 10px !important; margin: 0 !important;}",
-        " /* Centers the text content nicely */.rich-text__wrapper {max-width: 100% !important; text-align: center !important; padding: 0 20px !important;}"
-      ],
-      "name": "t:names.rich_text_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 25,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-3",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
       }
     }
   },
