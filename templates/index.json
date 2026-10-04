@@ -1131,7 +1131,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h6><strong>Important Update: Temporary Shipping Pause</strong></h6>",
+            "text": "<h4><strong>Important Update To Our Lovely Customers:</strong></h4>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1158,7 +1158,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h6>Please note that our team will be waway on holiday from October 5th to Octobrer 15th, 2026.</h6><h6>You can still place order during this time, but please be aware that shipping will pause while we are away. All orders placedduring our break will be dispatched promptly upon our return on <strong>Thursday, October 15th.</strong></h6>",
+            "text": "<p>Please note that our team will be at <a href=\"https://mbsfestival.com.au/sydney/\" target=\"_blank\" title=\"MBS Festival Sydney\">Mind Body Spirit Festival, Sydney</a> from October 5th to Octobrer 15th, 2026.</p><p>You can still place order during this time, but please be aware that shipping will pause while we are away. All orders placedduring our break will be dispatched promptly upon our return on <strong>Thursday, October 15th.</strong></p>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
