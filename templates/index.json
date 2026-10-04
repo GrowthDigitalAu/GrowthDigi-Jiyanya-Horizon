@@ -1202,7 +1202,7 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 25,
         "section_width": "page-width",
-        "section_height": "small",
+        "section_height": "",
         "section_height_custom": 50,
         "color_scheme": "scheme-3",
         "background_media": "none",
@@ -1216,18 +1216,18 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
     "hero_jVaWmY",
+    "section_NfUXPC",
     "section_3HGCRK",
     "product_list_fa6P9H",
     "collection_list_WkYadJ",
     "section_BeEiHC",
-    "hero_BbM69n",
-    "section_NfUXPC"
+    "hero_BbM69n"
   ]
 }
