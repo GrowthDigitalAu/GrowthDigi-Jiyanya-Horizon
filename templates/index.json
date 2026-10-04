@@ -1159,9 +1159,9 @@
           "name": "t:names.text",
           "settings": {
             "text": "<h6>Please note that our team will be waway on holiday from October 5th to Octobrer 15th, 2026.</h6><h6>You can still place order during this time, but please be aware that shipping will pause while we are away. All orders placedduring our break will be dispatched promptly upon our return on <strong>Thursday, October 15th.</strong></h6>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
+            "width": "fit-content",
+            "max_width": "none",
+            "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
             "font_size": "",
@@ -1188,8 +1188,8 @@
       ],
       "custom_css": [
         "/* Stretches the section full-width and removes default theme padding */.section-rich-text {max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
-        "/* Shrinks the top and bottom height to fit tightly around the text */.rich-text {padding-top: 10px !important; padding-bottom: 10px !important; margin: 0 !important;}",
-        "/* Centers the text content nicely */.rich-text__wrapper {max-width: 100% !important; text-align: center !important; padding: 0 20px !important;}"
+        " /* Shrinks the top and bottom height to fit tightly around the text */.rich-text {padding-top: 10px !important; padding-bottom: 10px !important; margin: 0 !important;}",
+        " /* Centers the text content nicely */.rich-text__wrapper {max-width: 100% !important; text-align: center !important; padding: 0 20px !important;}"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
@@ -1198,7 +1198,7 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 25,
         "section_width": "page-width",
