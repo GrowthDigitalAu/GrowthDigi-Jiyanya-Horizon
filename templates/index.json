@@ -368,8 +368,8 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<p>Please contact us to setup your wholesale account or Join our private Facebook group for exclusive wholesale discounts, early product access, and special offers.</p>",
-                "width": "fit-content",
-                "max_width": "normal",
+                "width": "100%",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
