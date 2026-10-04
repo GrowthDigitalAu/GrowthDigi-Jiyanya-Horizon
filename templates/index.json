@@ -348,6 +348,21 @@
               },
               "blocks": {}
             },
+            "button_4FU7tx": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Join Our Private Group",
+                "link": "https://www.facebook.com/groups/825313224664267",
+                "open_in_new_tab": true,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            },
             "text_nHqNKj": {
               "type": "text",
               "name": "t:names.text",
@@ -378,6 +393,7 @@
           },
           "block_order": [
             "text_ffiTJz",
+            "button_4FU7tx",
             "text_nHqNKj"
           ]
         },
@@ -421,21 +437,6 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "button_xde7GC": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Join Our Private Group",
-                "link": "https://www.facebook.com/groups/825313224664267",
-                "open_in_new_tab": true,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
             "group_KKmr6D": {
               "type": "group",
               "name": "t:names.group",
@@ -479,7 +480,6 @@
             }
           },
           "block_order": [
-            "button_xde7GC",
             "group_KKmr6D"
           ]
         }
@@ -490,7 +490,7 @@
       ],
       "name": "t:names.rich_text_section",
       "settings": {
-        "content_direction": "row",
+        "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
